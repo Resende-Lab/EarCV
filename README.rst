@@ -14,11 +14,11 @@ This tool allows users to rapidly extract features from images containing maize 
 Quick Start
 -----------
 
-CLONE REPO::
+Clone Repo::
 
  git clone https://github.com/juang0nzal3z/EarCV.git
 
-Running tests from the main ''EarCV/'' folder contianing this repo. Let's use images within the ''/test/'' folder as examples.
+Run tests from the main ''EarCV/'' folder contianing this repo. Let's use images within the ''/test/'' folder as examples.
 
 ^^^^^^^^^^^^^^
 Simplest case:
@@ -70,36 +70,34 @@ Output:
 .. image:: ./test/OUT/01_Proofs/test_img_2_proof.png
     :alt: alternate text
 
------
-Usage
------
+------------
+Installation
+------------
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Installation & Dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+Dependencies
+^^^^^^^^^^^^
 
-Clone this repo and make sure you have all the dependencies installed on your python environment of choice. I use virtual environments on linux (Ubuntu) because they make my life way easier. Dependencies:
+Clone this repo and make sure you have all the dependencies installed on your python environment of choice. Instructions below are use Linux (Ubuntu).
+
+Dependencies:
 
 * OpenCV 2
 * numpy
 * scipy
 * pyzbar (optional, QR code module)
-* plantcv (optional, Color correction module)
+* PlantCV (optional, Color correction module)
 
-* Clone Repo::
-
- git clone https://github.com/Resende-Lab/EarCV.git
-
-* For simplicity, use pip for simple installation of dependecies::
+For simplicity, use pip for installation of dependecies::
 
 	sudo apt-get install -y python3-pip
 
-* Create a virtual environment (reccomended). I like 'virtualenv', but you can you any you like or none at all::
+I reccomend you use a virtual environment. I like 'virtualenv', but you can use any you like or none at all::
 
 	pip install virtualenv virtualenvwrapper
 	nano ~/.bashrc
 
-* Add this to your './bashrc' file::
+Add this to your './bashrc' file::
 
 	# virtualenv and virtualenvwrapper
 	export WORKON_HOME=$HOME/.local/bin/.virtualenvs
@@ -107,79 +105,47 @@ Clone this repo and make sure you have all the dependencies installed on your py
 	export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 	source $HOME/.local/bin/virtualenvwrapper.sh
 
-* Source your edited './bashrc' file::
+Source your edited './bashrc' file::
 
 	source ~/.bashrc
 
-* Create virtual environment::
+^^^^^^^^^^
+Clone Repo
+^^^^^^^^^^
+::
+	git clone https://github.com/Resende-Lab/EarCV.git
+
+^^^^^^^^^^^^^^
+Install OpenCV
+^^^^^^^^^^^^^^
+
+Create virtual environment::
 
 	mkvirtualenv OpenCV -p python3
 
-* Install OpenCV 2 using pip::
+Install OpenCV 2 using pip::
 
 	pip install opencv-contrib-python
 
-* Test that the installation worked::
+Test that the installation worked::
 
 	python3 -c "import cv2; print(cv2.__version__)"
 
-If this does not work, then try installing from source. You can look this up on the internet but it is basically:
+You have installed OpenCV! If this does not work, then try installing from source. You can look this up depending on the operating system you suse.
 
-* Install the build tools and dependencies::
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Install Numpy, Scipy, PlantCV, Zbar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	sudo apt install build-essential cmake git pkg-config libgtk-3-dev \
-	    libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
-	    libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev \
-	    gfortran openexr libatlas-base-dev python3-dev python3-numpy \
-	    libtbb2 libtbb-dev libdc1394-22-dev libopenexr-dev \
-	    libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
-
-* Clone the OpenCV’s and OpenCV contrib repositories::
-
-	mkdir ~/opencv_build && cd ~/opencv_build
-	git clone https://github.com/opencv/opencv.git
-	git clone https://github.com/opencv/opencv_contrib.git
-
-* Create a temporary build directory, and navigate to it::
-
-	cd ~/opencv_build/opencv
-	mkdir -p build && cd build
-
-* Set up the OpenCV build with CMake::
-
-	cmake -D CMAKE_BUILD_TYPE=RELEASE \
-	    -D CMAKE_INSTALL_PREFIX=/usr/local \
-	    -D INSTALL_C_EXAMPLES=ON \
-	    -D INSTALL_PYTHON_EXAMPLES=ON \
-	    -D OPENCV_GENERATE_PKGCONFIG=ON \
-	    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_build/opencv_contrib/modules \
-	    -D BUILD_EXAMPLES=ON ..
-
-* Start the compilation process the number after the j correcponds to the number of cores in your processor::
-
-	make -j4
-
-* Install OpenCV with::
-
-	sudo make install
-
-* To verify the installation::
-
-	python3 -c "import cv2; print(cv2.__version__)"
-
-You have installed OpenCV!
-
-To install numpy and scipy using pip:
-
-* Pip install numpy::
+Pip install numpy::
 
 	pip3 install numpy
 
-* Then pip install scipy::
+Pip install scipy::
 
 	pip3 install scipy
 
-* Verify installation::
+Verify installation::
 
 	python3 -c "import numpy as np; print(np.__version__) ; import scipy as scipy; print(scipy.__version__)"
 
@@ -191,10 +157,10 @@ To install Zbar for the QR code module::
 
 	pip install zbar-py
 
-^^^^^^^^^^^^^
-Main pipeline
-^^^^^^^^^^^^^
-This tool uses any standard image format (.jpg, .jpeg, .png, or .tiff). To start, the main function does the following:
+-----
+Usage
+-----
+This tool uses any standard image format (.jpg, .jpeg, .png, or .tiff). The main function does the following:
 
 * Segments ears photographed against a uniform background
 	- Background can be any color insofar it contrasts well with the ears.
@@ -231,9 +197,9 @@ For complete usage documentation run::
 
 	python ./src/main.py -h
 
-^^^^^
+^^^^^^
 Output
-^^^^^
+^^^^^^
 The output structure is as follows::
 
 	./OUT/
@@ -521,4 +487,3 @@ This tool allows the user to convert any 1D or 2D measurements from pixels to a 
 * Examples::
 
 	python colorcorrection.py test_img_2.png False
-
