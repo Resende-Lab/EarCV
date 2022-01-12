@@ -276,7 +276,7 @@ def clr_chk(img):
                 cv2.drawContours(clr_ck, [c], -1, (255), -1)
     clr_ck = cv2.morphologyEx(clr_ck, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (25, 25)),
                               iterations=10)
-    _,cnts,_ = cv2.findContours(clr_ck, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE);
+    cnts,_ = cv2.findContours(clr_ck, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE);
     for c in cnts:
         rects = cv2.minAreaRect(c)
         boxs = cv2.boxPoints(rects)

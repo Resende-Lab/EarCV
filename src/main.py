@@ -792,7 +792,8 @@ def main():
 			else:
 				if args.tip[0] == 'h':
 					chnnl=cv2.bitwise_not(h)
-				elif args.tip[0] == 's':
+				else:
+					args.tip[0] == 's'
 					chnnl = s.copy()
 				_, otsu = cob_seg.otsu(chnnl)
 				tip_thresh_int = float(args.tip[1])

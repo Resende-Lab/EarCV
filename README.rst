@@ -46,7 +46,7 @@ Output:
 
 Now lets run the same image with default cob and shank segmentation::
 
-	python ./src/main.py -i ./test/IN/test_img_1.JPG -o ./test/OUT/ -t 0 0 0 0 -b 0 0 0 0 
+	python ./src/main.py -i ./test/IN/test_img_1.JPG -o ./test/OUT/ -t -b
 
 Output:
 
@@ -63,7 +63,7 @@ Full feature case:
 
 Let's run an image with all of the features using default settings::
 
-	python ./src/main.py -i ./test/IN/test_img_2.png -o ./test/OUT/ -qr -clr ./test/IN/clrchr.png -ppm 10 -t 0 0 0 0 -b 0 0 0 0
+	python ./src/main.py -i ./test/IN/test_img_2.png -o ./test/OUT/ -qr -r -clr ./test/IN/clrchr.png -ppm 10 cm -t -b
 
 Output:
 
@@ -155,7 +155,7 @@ To install PlantCV for the color correciton module::
 
 To install Zbar for the QR code module::
 
-	pip install zbar-py
+	sudo apt-get install libzbar0
 
 -----
 Usage

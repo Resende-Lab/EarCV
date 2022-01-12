@@ -1,0 +1,465 @@
+2022-01-12 15:52:25,509 — INFO — Namespace(bottom=None, color_checker='None', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_1.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=None, qr_window_size_overlap=None, qrcode=False, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=None, usda_grade=False)
+2022-01-12 15:52:25,510 — INFO — [START]--test_img_1--Starting analysis pipeline...
+2022-01-12 15:52:25,607 — INFO — [START]--test_img_1--Image is 1968 by 2944 pixels
+2022-01-12 15:52:25,608 — INFO — [QR]--test_img_1--QR module turned off
+2022-01-12 15:52:25,611 — INFO — [PPM]--test_img_1--Pixels per Metric module turned off
+2022-01-12 15:52:25,615 — INFO — [COLOR]--test_img_1--Color correction module turned off
+2022-01-12 15:52:25,622 — INFO — [EARS]--test_img_1--Looking for ears...
+2022-01-12 15:52:26,925 — INFO — [EARS]--test_img_1--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 15:52:26,925 — INFO — [EARS]--test_img_1--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 15:52:26,930 — INFO — [EARS]--test_img_1--Found 1 Ear(s) before clean up
+2022-01-12 15:52:26,930 — INFO — [CLNUP]--test_img_1--Ear clean-up module turned off.
+2022-01-12 15:52:27,120 — INFO — [EARS]--test_img_1--Ear #1: Min Area: 6.051% Aspect Ratio: 0.22 Solidity score: 0.952
+2022-01-12 15:52:27,121 — INFO — [EARS]--test_img_1--Found 1 Ear(s) after clean up
+2022-01-12 15:52:30,334 — INFO — [EARS]--test_img_1--Proof saved to: ./test/OUT/01_Proofs/test_img_1_proof.png
+2022-01-12 15:52:30,706 — INFO — [SILK]--test_img_1--Silk clean-up module turned off.
+2022-01-12 15:52:30,706 — INFO — [EAR]--test_img_1--Ear #1: Checking ear orientation...
+2022-01-12 15:52:30,742 — INFO — [EAR]--test_img_1--Ear #1: Ear orientation is fine.
+2022-01-12 15:52:30,746 — INFO — [EAR]--test_img_1--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_1_ear_1.png
+2022-01-12 15:52:30,781 — INFO — [EAR]--test_img_1--Extracting features from 1 ears...
+2022-01-12 15:52:30,782 — INFO — [EAR]--test_img_1--Ear #1: Extracting basic morphological features...
+2022-01-12 15:52:31,042 — INFO — [EAR]--test_img_1--Ear #1: Done extracting basic morphological features
+2022-01-12 15:52:31,050 — INFO — [EAR]--test_img_1--Ear #1: Done extracting image moments
+2022-01-12 15:52:31,066 — INFO — [EAR]--test_img_1--Ear #1: Ear tip segmentation turned off
+2022-01-12 15:52:31,067 — INFO — [EAR]--test_img_1--Ear #1: Ear bottom segmentation turned off
+2022-01-12 15:52:31,068 — INFO — [EAR]--test_img_1--Ear #1: Extracting kernel features...
+2022-01-12 15:53:12,837 — INFO — Namespace(bottom=None, color_checker='None', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_2.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=None, qr_window_size_overlap=None, qrcode=False, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=None, usda_grade=False)
+2022-01-12 15:53:22,682 — INFO — Namespace(bottom=None, color_checker='None', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_2.png', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=None, qr_window_size_overlap=None, qrcode=False, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=None, usda_grade=False)
+2022-01-12 15:53:22,687 — INFO — [START]--test_img_2--Starting analysis pipeline...
+2022-01-12 15:53:23,213 — INFO — [START]--test_img_2--Image is 2624 by 3936 pixels
+2022-01-12 15:53:23,214 — INFO — [QR]--test_img_2--QR module turned off
+2022-01-12 15:53:23,218 — INFO — [PPM]--test_img_2--Pixels per Metric module turned off
+2022-01-12 15:53:23,224 — INFO — [COLOR]--test_img_2--Color correction module turned off
+2022-01-12 15:53:23,239 — INFO — [EARS]--test_img_2--Looking for ears...
+2022-01-12 15:53:26,572 — INFO — [EARS]--test_img_2--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 15:53:26,573 — INFO — [EARS]--test_img_2--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 15:53:26,609 — INFO — [EARS]--test_img_2--Found 5 Ear(s) before clean up
+2022-01-12 15:53:26,610 — INFO — [CLNUP]--test_img_2--Ear clean-up module turned off.
+2022-01-12 15:53:26,916 — INFO — [EARS]--test_img_2--Ear #1: Min Area: 6.647% Aspect Ratio: 0.13 Solidity score: 0.846
+2022-01-12 15:53:26,926 — INFO — [EARS]--test_img_2--Ear #2: Min Area: 2.251% Aspect Ratio: 0.3 Solidity score: 0.903
+2022-01-12 15:53:26,938 — INFO — [EARS]--test_img_2--Ear #3: Min Area: 3.094% Aspect Ratio: 0.25 Solidity score: 0.913
+2022-01-12 15:53:26,943 — INFO — [EARS]--test_img_2--Ear #4: Min Area: 2.493% Aspect Ratio: 0.26 Solidity score: 0.9
+2022-01-12 15:53:26,955 — INFO — [EARS]--test_img_2--Ear #5: Min Area: 6.513% Aspect Ratio: 0.11 Solidity score: 0.929
+2022-01-12 15:53:26,957 — INFO — [EARS]--test_img_2--Found 5 Ear(s) after clean up
+2022-01-12 15:53:30,304 — INFO — [EARS]--test_img_2--Proof saved to: ./test/OUT/01_Proofs/test_img_2_proof.png
+2022-01-12 15:53:30,942 — INFO — [SILK]--test_img_2--Silk clean-up module turned off.
+2022-01-12 15:53:30,942 — INFO — [EAR]--test_img_2--Ear #1: Checking ear orientation...
+2022-01-12 15:53:30,994 — INFO — [EAR]--test_img_2--Ear #1: Ear orientation is fine.
+2022-01-12 15:53:30,999 — INFO — [EAR]--test_img_2--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_2_ear_1.png
+2022-01-12 15:53:31,077 — INFO — [SILK]--test_img_2--Silk clean-up module turned off.
+2022-01-12 15:53:31,077 — INFO — [EAR]--test_img_2--Ear #2: Checking ear orientation...
+2022-01-12 15:53:31,096 — INFO — [EAR]--test_img_2--Ear #2: Ear orientation is fine.
+2022-01-12 15:53:31,100 — INFO — [EAR]--test_img_2--Ear #2: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_2_ear_2.png
+2022-01-12 15:53:31,143 — INFO — [SILK]--test_img_2--Silk clean-up module turned off.
+2022-01-12 15:53:31,144 — INFO — [EAR]--test_img_2--Ear #3: Checking ear orientation...
+2022-01-12 15:53:31,173 — WARNING — [EAR]--test_img_2--Ear #3: Ear rotated
+2022-01-12 15:53:31,178 — INFO — [EAR]--test_img_2--Ear #3: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_2_ear_3.png
+2022-01-12 15:53:31,218 — INFO — [SILK]--test_img_2--Silk clean-up module turned off.
+2022-01-12 15:53:31,218 — INFO — [EAR]--test_img_2--Ear #4: Checking ear orientation...
+2022-01-12 15:53:31,243 — WARNING — [EAR]--test_img_2--Ear #4: Ear rotated
+2022-01-12 15:53:31,246 — INFO — [EAR]--test_img_2--Ear #4: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_2_ear_4.png
+2022-01-12 15:53:31,292 — INFO — [SILK]--test_img_2--Silk clean-up module turned off.
+2022-01-12 15:53:31,292 — INFO — [EAR]--test_img_2--Ear #5: Checking ear orientation...
+2022-01-12 15:53:31,345 — WARNING — [EAR]--test_img_2--Ear #5: Ear rotated
+2022-01-12 15:53:31,349 — INFO — [EAR]--test_img_2--Ear #5: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_2_ear_5.png
+2022-01-12 15:53:31,406 — INFO — [EAR]--test_img_2--Extracting features from 5 ears...
+2022-01-12 15:53:31,406 — INFO — [EAR]--test_img_2--Ear #1: Extracting basic morphological features...
+2022-01-12 15:53:31,915 — INFO — [EAR]--test_img_2--Ear #1: Done extracting basic morphological features
+2022-01-12 15:53:31,937 — INFO — [EAR]--test_img_2--Ear #1: Done extracting image moments
+2022-01-12 15:53:31,963 — INFO — [EAR]--test_img_2--Ear #1: Ear tip segmentation turned off
+2022-01-12 15:53:31,964 — INFO — [EAR]--test_img_2--Ear #1: Ear bottom segmentation turned off
+2022-01-12 15:53:31,965 — INFO — [EAR]--test_img_2--Ear #1: Extracting kernel features...
+2022-01-12 15:55:45,882 — INFO — Namespace(bottom=None, color_checker='None', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_1.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=None, qr_window_size_overlap=None, qrcode=False, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=None, usda_grade=False)
+2022-01-12 15:55:45,883 — INFO — [START]--test_img_1--Starting analysis pipeline...
+2022-01-12 15:55:45,988 — INFO — [START]--test_img_1--Image is 1968 by 2944 pixels
+2022-01-12 15:55:45,988 — INFO — [QR]--test_img_1--QR module turned off
+2022-01-12 15:55:45,993 — INFO — [PPM]--test_img_1--Pixels per Metric module turned off
+2022-01-12 15:55:45,997 — INFO — [COLOR]--test_img_1--Color correction module turned off
+2022-01-12 15:55:46,005 — INFO — [EARS]--test_img_1--Looking for ears...
+2022-01-12 15:55:47,435 — INFO — [EARS]--test_img_1--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 15:55:47,436 — INFO — [EARS]--test_img_1--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 15:55:47,442 — INFO — [EARS]--test_img_1--Found 1 Ear(s) before clean up
+2022-01-12 15:55:47,442 — INFO — [CLNUP]--test_img_1--Ear clean-up module turned off.
+2022-01-12 15:55:47,622 — INFO — [EARS]--test_img_1--Ear #1: Min Area: 6.051% Aspect Ratio: 0.22 Solidity score: 0.952
+2022-01-12 15:55:47,623 — INFO — [EARS]--test_img_1--Found 1 Ear(s) after clean up
+2022-01-12 15:55:50,833 — INFO — [EARS]--test_img_1--Proof saved to: ./test/OUT/01_Proofs/test_img_1_proof.png
+2022-01-12 15:55:51,209 — INFO — [SILK]--test_img_1--Silk clean-up module turned off.
+2022-01-12 15:55:51,209 — INFO — [EAR]--test_img_1--Ear #1: Checking ear orientation...
+2022-01-12 15:55:51,241 — INFO — [EAR]--test_img_1--Ear #1: Ear orientation is fine.
+2022-01-12 15:55:51,246 — INFO — [EAR]--test_img_1--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_1_ear_1.png
+2022-01-12 15:55:51,276 — INFO — [EAR]--test_img_1--Extracting features from 1 ears...
+2022-01-12 15:55:51,276 — INFO — [EAR]--test_img_1--Ear #1: Extracting basic morphological features...
+2022-01-12 15:55:51,543 — INFO — [EAR]--test_img_1--Ear #1: Done extracting basic morphological features
+2022-01-12 15:55:51,553 — INFO — [EAR]--test_img_1--Ear #1: Done extracting image moments
+2022-01-12 15:55:51,571 — INFO — [EAR]--test_img_1--Ear #1: Ear tip segmentation turned off
+2022-01-12 15:55:51,571 — INFO — [EAR]--test_img_1--Ear #1: Ear bottom segmentation turned off
+2022-01-12 15:55:51,572 — INFO — [EAR]--test_img_1--Ear #1: Extracting kernel features...
+2022-01-12 15:55:54,392 — INFO — [EAR]--test_img_1--Ear #1: Done extracting kernel features
+2022-01-12 15:55:54,393 — INFO — [EAR]--test_img_1--Ear #1: USDA grading turned off.
+2022-01-12 15:55:54,396 — INFO — [EAR]--test_img_1--Ear #1: Ear proof saved to: ./test/OUT/03_Ear_Proofs/test_img_1_ear_1_proof.png
+2022-01-12 15:55:57,334 — INFO — [EAR]--test_img_1--Ear #1: Saved features to: ./test/OUT/features.csv
+2022-01-12 15:55:57,335 — INFO — [EAR]--test_img_1--Ear #1: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 15:55:57,335 — INFO — [EAR]--test_img_1--Collected all ear features.
+2022-01-12 15:56:52,829 — INFO — Namespace(bottom=['0', '0', '0', '0'], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_2.png', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=['0', '0', '0', '0'], usda_grade=False)
+2022-01-12 15:56:52,830 — INFO — [START]--test_img_2--Starting analysis pipeline...
+2022-01-12 15:56:53,323 — INFO — [START]--test_img_2--Image is 2624 by 3936 pixels
+2022-01-12 15:56:53,323 — INFO — [QR]--test_img_2--Starting QR code extraction module...
+2022-01-12 15:56:54,140 — INFO — [QR]--test_img_2--Found QRCODE: W201881 on the 1th iteration
+2022-01-12 15:56:54,141 — INFO — [QR]--W201881--Renamed with QRCODE info: W201881
+2022-01-12 15:56:54,142 — INFO — [QR]--W201881--Saved filename and QRcode info to: ./test/OUT/QRcodes.csv
+2022-01-12 15:56:54,142 — INFO — [PPM]--W201881--Looking for solid color square to calculate pixels per metric...
+2022-01-12 15:56:54,274 — INFO — [PPM]--W201881--Found 8.7 pixels per cm
+2022-01-12 15:56:54,274 — INFO — [PPM]--W201881--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 15:56:54,275 — INFO — [COLOR]--W201881--Starting color correction module with provided color checker reference...
+2022-01-12 15:58:04,045 — INFO — Namespace(bottom=['0', '0', '0', '0'], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_2.png', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=['0', '0', '0', '0'], usda_grade=False)
+2022-01-12 15:58:47,591 — INFO — Namespace(bottom=['0', '0', '0', '0'], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_3.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=['0', '0', '0', '0'], usda_grade=False)
+2022-01-12 15:58:47,591 — INFO — [START]--test_img_3--Starting analysis pipeline...
+2022-01-12 15:58:47,764 — INFO — [START]--test_img_3--Image is 2624 by 3936 pixels
+2022-01-12 15:58:47,764 — INFO — [QR]--test_img_3--Starting QR code extraction module...
+2022-01-12 15:58:48,200 — WARNING — [QR]--test_img_3--Error: QR code not found
+2022-01-12 15:58:48,206 — INFO — [PPM]--test_img_3--Looking for solid color square to calculate pixels per metric...
+2022-01-12 15:58:48,329 — INFO — [PPM]--test_img_3--Found 20.4 pixels per cm
+2022-01-12 15:58:48,330 — INFO — [PPM]--test_img_3--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 15:58:48,330 — INFO — [COLOR]--test_img_3--Starting color correction module with provided color checker reference...
+2022-01-12 15:59:05,121 — INFO — [EARS]--test_img_3--Looking for ears...
+2022-01-12 15:59:08,069 — INFO — [EARS]--test_img_3--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 15:59:08,069 — INFO — [EARS]--test_img_3--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 15:59:08,086 — INFO — [EARS]--test_img_3--Found 3 Ear(s) before clean up
+2022-01-12 15:59:08,087 — INFO — [CLNUP]--test_img_3--Ear clean-up module turned off.
+2022-01-12 15:59:08,359 — INFO — [EARS]--test_img_3--Ear #1: Min Area: 3.916% Aspect Ratio: 0.26 Solidity score: 0.953
+2022-01-12 15:59:08,368 — INFO — [EARS]--test_img_3--Ear #2: Min Area: 3.852% Aspect Ratio: 0.28 Solidity score: 0.963
+2022-01-12 15:59:08,376 — INFO — [EARS]--test_img_3--Ear #3: Min Area: 3.894% Aspect Ratio: 0.26 Solidity score: 0.957
+2022-01-12 15:59:08,378 — INFO — [EARS]--test_img_3--Found 3 Ear(s) after clean up
+2022-01-12 15:59:11,420 — INFO — [EARS]--test_img_3--Proof saved to: ./test/OUT/01_Proofs/test_img_3_proof.png
+2022-01-12 15:59:12,133 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 15:59:12,133 — INFO — [EAR]--test_img_3--Ear #1: Checking ear orientation...
+2022-01-12 15:59:12,164 — WARNING — [EAR]--test_img_3--Ear #1: Ear rotated
+2022-01-12 15:59:12,166 — INFO — [EAR]--test_img_3--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_1.png
+2022-01-12 15:59:12,215 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 15:59:12,216 — INFO — [EAR]--test_img_3--Ear #2: Checking ear orientation...
+2022-01-12 15:59:12,246 — INFO — [EAR]--test_img_3--Ear #2: Ear orientation is fine.
+2022-01-12 15:59:12,248 — INFO — [EAR]--test_img_3--Ear #2: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_2.png
+2022-01-12 15:59:12,294 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 15:59:12,294 — INFO — [EAR]--test_img_3--Ear #3: Checking ear orientation...
+2022-01-12 15:59:12,316 — INFO — [EAR]--test_img_3--Ear #3: Ear orientation is fine.
+2022-01-12 15:59:12,318 — INFO — [EAR]--test_img_3--Ear #3: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_3.png
+2022-01-12 15:59:12,349 — INFO — [EAR]--test_img_3--Extracting features from 3 ears...
+2022-01-12 15:59:12,349 — INFO — [EAR]--test_img_3--Ear #1: Extracting basic morphological features...
+2022-01-12 15:59:12,556 — INFO — [EAR]--test_img_3--Ear #1: Done extracting basic morphological features
+2022-01-12 15:59:12,565 — INFO — [EAR]--test_img_3--Ear #1: Done extracting image moments
+2022-01-12 17:53:40,954 — INFO — Namespace(bottom=['0', '0', '0', '0'], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_3.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=['0', '0', '0', '0'], usda_grade=False)
+2022-01-12 17:53:40,955 — INFO — [START]--test_img_3--Starting analysis pipeline...
+2022-01-12 17:53:41,108 — INFO — [START]--test_img_3--Image is 2624 by 3936 pixels
+2022-01-12 17:53:41,108 — INFO — [QR]--test_img_3--Starting QR code extraction module...
+2022-01-12 17:53:41,541 — WARNING — [QR]--test_img_3--Error: QR code not found
+2022-01-12 17:53:41,547 — INFO — [PPM]--test_img_3--Looking for solid color square to calculate pixels per metric...
+2022-01-12 17:53:41,660 — INFO — [PPM]--test_img_3--Found 20.4 pixels per cm
+2022-01-12 17:53:41,660 — INFO — [PPM]--test_img_3--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 17:53:41,661 — INFO — [COLOR]--test_img_3--Starting color correction module with provided color checker reference...
+2022-01-12 17:53:57,676 — INFO — [EARS]--test_img_3--Looking for ears...
+2022-01-12 17:54:00,436 — INFO — [EARS]--test_img_3--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 17:54:00,436 — INFO — [EARS]--test_img_3--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 17:54:00,453 — INFO — [EARS]--test_img_3--Found 3 Ear(s) before clean up
+2022-01-12 17:54:00,454 — INFO — [CLNUP]--test_img_3--Ear clean-up module turned off.
+2022-01-12 17:54:00,746 — INFO — [EARS]--test_img_3--Ear #1: Min Area: 3.916% Aspect Ratio: 0.26 Solidity score: 0.953
+2022-01-12 17:54:00,752 — INFO — [EARS]--test_img_3--Ear #2: Min Area: 3.852% Aspect Ratio: 0.28 Solidity score: 0.963
+2022-01-12 17:54:00,758 — INFO — [EARS]--test_img_3--Ear #3: Min Area: 3.894% Aspect Ratio: 0.26 Solidity score: 0.957
+2022-01-12 17:54:00,759 — INFO — [EARS]--test_img_3--Found 3 Ear(s) after clean up
+2022-01-12 17:54:03,840 — INFO — [EARS]--test_img_3--Proof saved to: ./test/OUT/01_Proofs/test_img_3_proof.png
+2022-01-12 17:54:04,568 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 17:54:04,568 — INFO — [EAR]--test_img_3--Ear #1: Checking ear orientation...
+2022-01-12 17:54:04,599 — WARNING — [EAR]--test_img_3--Ear #1: Ear rotated
+2022-01-12 17:54:04,602 — INFO — [EAR]--test_img_3--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_1.png
+2022-01-12 17:54:04,646 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 17:54:04,646 — INFO — [EAR]--test_img_3--Ear #2: Checking ear orientation...
+2022-01-12 17:54:04,675 — INFO — [EAR]--test_img_3--Ear #2: Ear orientation is fine.
+2022-01-12 17:54:04,677 — INFO — [EAR]--test_img_3--Ear #2: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_2.png
+2022-01-12 17:54:04,729 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 17:54:04,730 — INFO — [EAR]--test_img_3--Ear #3: Checking ear orientation...
+2022-01-12 17:54:04,754 — INFO — [EAR]--test_img_3--Ear #3: Ear orientation is fine.
+2022-01-12 17:54:04,756 — INFO — [EAR]--test_img_3--Ear #3: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_3.png
+2022-01-12 17:54:04,792 — INFO — [EAR]--test_img_3--Extracting features from 3 ears...
+2022-01-12 17:54:04,792 — INFO — [EAR]--test_img_3--Ear #1: Extracting basic morphological features...
+2022-01-12 17:54:05,002 — INFO — [EAR]--test_img_3--Ear #1: Done extracting basic morphological features
+2022-01-12 17:54:05,011 — INFO — [EAR]--test_img_3--Ear #1: Done extracting image moments
+2022-01-12 17:54:05,025 — INFO — [EAR]--test_img_3--Ear #1: Segmenting ear tip with custom thresholding in 0 channel at intensitiy of 0...score 0.0
+2022-01-12 18:02:40,691 — INFO — Namespace(bottom=['0', '0', '1', '0'], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_3.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=['0', '0', '1', '0'], usda_grade=False)
+2022-01-12 18:02:40,692 — INFO — [START]--test_img_3--Starting analysis pipeline...
+2022-01-12 18:02:40,848 — INFO — [START]--test_img_3--Image is 2624 by 3936 pixels
+2022-01-12 18:02:40,849 — INFO — [QR]--test_img_3--Starting QR code extraction module...
+2022-01-12 18:02:41,229 — WARNING — [QR]--test_img_3--Error: QR code not found
+2022-01-12 18:02:41,235 — INFO — [PPM]--test_img_3--Looking for solid color square to calculate pixels per metric...
+2022-01-12 18:02:41,345 — INFO — [PPM]--test_img_3--Found 20.4 pixels per cm
+2022-01-12 18:02:41,345 — INFO — [PPM]--test_img_3--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 18:02:41,345 — INFO — [COLOR]--test_img_3--Starting color correction module with provided color checker reference...
+2022-01-12 18:02:56,284 — INFO — [EARS]--test_img_3--Looking for ears...
+2022-01-12 18:02:58,942 — INFO — [EARS]--test_img_3--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 18:02:58,942 — INFO — [EARS]--test_img_3--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 18:02:58,958 — INFO — [EARS]--test_img_3--Found 3 Ear(s) before clean up
+2022-01-12 18:02:58,958 — INFO — [CLNUP]--test_img_3--Ear clean-up module turned off.
+2022-01-12 18:02:59,218 — INFO — [EARS]--test_img_3--Ear #1: Min Area: 3.916% Aspect Ratio: 0.26 Solidity score: 0.953
+2022-01-12 18:02:59,224 — INFO — [EARS]--test_img_3--Ear #2: Min Area: 3.852% Aspect Ratio: 0.28 Solidity score: 0.963
+2022-01-12 18:02:59,230 — INFO — [EARS]--test_img_3--Ear #3: Min Area: 3.894% Aspect Ratio: 0.26 Solidity score: 0.957
+2022-01-12 18:02:59,232 — INFO — [EARS]--test_img_3--Found 3 Ear(s) after clean up
+2022-01-12 18:03:02,339 — INFO — [EARS]--test_img_3--Proof saved to: ./test/OUT/01_Proofs/test_img_3_proof.png
+2022-01-12 18:03:03,074 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 18:03:03,074 — INFO — [EAR]--test_img_3--Ear #1: Checking ear orientation...
+2022-01-12 18:03:03,102 — WARNING — [EAR]--test_img_3--Ear #1: Ear rotated
+2022-01-12 18:03:03,106 — INFO — [EAR]--test_img_3--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_1.png
+2022-01-12 18:03:03,152 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 18:03:03,153 — INFO — [EAR]--test_img_3--Ear #2: Checking ear orientation...
+2022-01-12 18:03:03,182 — INFO — [EAR]--test_img_3--Ear #2: Ear orientation is fine.
+2022-01-12 18:03:03,185 — INFO — [EAR]--test_img_3--Ear #2: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_2.png
+2022-01-12 18:03:03,228 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 18:03:03,229 — INFO — [EAR]--test_img_3--Ear #3: Checking ear orientation...
+2022-01-12 18:03:03,250 — INFO — [EAR]--test_img_3--Ear #3: Ear orientation is fine.
+2022-01-12 18:03:03,252 — INFO — [EAR]--test_img_3--Ear #3: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_3.png
+2022-01-12 18:03:03,289 — INFO — [EAR]--test_img_3--Extracting features from 3 ears...
+2022-01-12 18:03:03,289 — INFO — [EAR]--test_img_3--Ear #1: Extracting basic morphological features...
+2022-01-12 18:03:03,495 — INFO — [EAR]--test_img_3--Ear #1: Done extracting basic morphological features
+2022-01-12 18:03:03,504 — INFO — [EAR]--test_img_3--Ear #1: Done extracting image moments
+2022-01-12 18:03:03,518 — INFO — [EAR]--test_img_3--Ear #1: Segmenting ear tip with custom thresholding in 0 channel at intensitiy of 0...score 0.0
+2022-01-12 18:05:15,977 — INFO — Namespace(bottom=[], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_3.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=[], usda_grade=False)
+2022-01-12 18:05:15,977 — INFO — [START]--test_img_3--Starting analysis pipeline...
+2022-01-12 18:05:16,125 — INFO — [START]--test_img_3--Image is 2624 by 3936 pixels
+2022-01-12 18:05:16,125 — INFO — [QR]--test_img_3--Starting QR code extraction module...
+2022-01-12 18:05:16,513 — WARNING — [QR]--test_img_3--Error: QR code not found
+2022-01-12 18:05:16,515 — INFO — [PPM]--test_img_3--Looking for solid color square to calculate pixels per metric...
+2022-01-12 18:05:16,627 — INFO — [PPM]--test_img_3--Found 20.4 pixels per cm
+2022-01-12 18:05:16,627 — INFO — [PPM]--test_img_3--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 18:05:16,628 — INFO — [COLOR]--test_img_3--Starting color correction module with provided color checker reference...
+2022-01-12 18:05:31,539 — INFO — [EARS]--test_img_3--Looking for ears...
+2022-01-12 18:05:34,284 — INFO — [EARS]--test_img_3--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 18:05:34,284 — INFO — [EARS]--test_img_3--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 18:05:34,300 — INFO — [EARS]--test_img_3--Found 3 Ear(s) before clean up
+2022-01-12 18:05:34,301 — INFO — [CLNUP]--test_img_3--Ear clean-up module turned off.
+2022-01-12 18:05:34,588 — INFO — [EARS]--test_img_3--Ear #1: Min Area: 3.916% Aspect Ratio: 0.26 Solidity score: 0.953
+2022-01-12 18:05:34,595 — INFO — [EARS]--test_img_3--Ear #2: Min Area: 3.852% Aspect Ratio: 0.28 Solidity score: 0.963
+2022-01-12 18:05:34,602 — INFO — [EARS]--test_img_3--Ear #3: Min Area: 3.894% Aspect Ratio: 0.26 Solidity score: 0.957
+2022-01-12 18:05:34,604 — INFO — [EARS]--test_img_3--Found 3 Ear(s) after clean up
+2022-01-12 18:05:37,838 — INFO — [EARS]--test_img_3--Proof saved to: ./test/OUT/01_Proofs/test_img_3_proof.png
+2022-01-12 18:05:38,566 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 18:05:38,566 — INFO — [EAR]--test_img_3--Ear #1: Checking ear orientation...
+2022-01-12 18:05:38,598 — WARNING — [EAR]--test_img_3--Ear #1: Ear rotated
+2022-01-12 18:05:38,601 — INFO — [EAR]--test_img_3--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_1.png
+2022-01-12 18:05:38,651 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 18:05:38,651 — INFO — [EAR]--test_img_3--Ear #2: Checking ear orientation...
+2022-01-12 18:05:38,683 — INFO — [EAR]--test_img_3--Ear #2: Ear orientation is fine.
+2022-01-12 18:05:38,685 — INFO — [EAR]--test_img_3--Ear #2: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_2.png
+2022-01-12 18:05:38,731 — INFO — [SILK]--test_img_3--Silk clean-up module turned off.
+2022-01-12 18:05:38,732 — INFO — [EAR]--test_img_3--Ear #3: Checking ear orientation...
+2022-01-12 18:05:38,756 — INFO — [EAR]--test_img_3--Ear #3: Ear orientation is fine.
+2022-01-12 18:05:38,759 — INFO — [EAR]--test_img_3--Ear #3: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_3_ear_3.png
+2022-01-12 18:05:38,789 — INFO — [EAR]--test_img_3--Extracting features from 3 ears...
+2022-01-12 18:05:38,790 — INFO — [EAR]--test_img_3--Ear #1: Extracting basic morphological features...
+2022-01-12 18:05:39,002 — INFO — [EAR]--test_img_3--Ear #1: Done extracting basic morphological features
+2022-01-12 18:05:39,011 — INFO — [EAR]--test_img_3--Ear #1: Done extracting image moments
+2022-01-12 18:05:39,025 — INFO — [EAR]--test_img_3--Ear #1: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 102.19999999999999
+2022-01-12 18:05:39,025 — INFO — [EAR]--test_img_3--Ear #1: Otsu found 73.0 threshold
+2022-01-12 18:05:39,050 — INFO — [EAR]--test_img_3--Ear #1: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:05:39,052 — INFO — [EAR]--test_img_3--Ear #1: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 102.19999999999999
+2022-01-12 18:05:39,052 — INFO — [EAR]--test_img_3--Ear #1: Otsu found 73.0 threshold
+2022-01-12 18:05:39,073 — INFO — [EAR]--test_img_3--Ear #1: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:05:39,074 — INFO — [EAR]--test_img_3--Ear #1: Extracting kernel features...
+2022-01-12 18:05:41,928 — INFO — [EAR]--test_img_3--Ear #1: Done extracting kernel features
+2022-01-12 18:05:41,930 — INFO — [EAR]--test_img_3--Ear #1: USDA grading turned off.
+2022-01-12 18:05:41,933 — INFO — [EAR]--test_img_3--Ear #1: Ear proof saved to: ./test/OUT/03_Ear_Proofs/test_img_3_ear_1_proof.png
+2022-01-12 18:05:44,890 — INFO — [EAR]--test_img_3--Ear #1: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:05:44,891 — INFO — [EAR]--test_img_3--Ear #1: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:05:44,891 — INFO — [EAR]--test_img_3--Ear #2: Extracting basic morphological features...
+2022-01-12 18:05:45,154 — INFO — [EAR]--test_img_3--Ear #2: Done extracting basic morphological features
+2022-01-12 18:05:45,164 — INFO — [EAR]--test_img_3--Ear #2: Done extracting image moments
+2022-01-12 18:05:45,178 — INFO — [EAR]--test_img_3--Ear #2: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 105.0
+2022-01-12 18:05:45,179 — INFO — [EAR]--test_img_3--Ear #2: Otsu found 75.0 threshold
+2022-01-12 18:05:45,208 — INFO — [EAR]--test_img_3--Ear #2: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:05:45,209 — INFO — [EAR]--test_img_3--Ear #2: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 105.0
+2022-01-12 18:05:45,209 — INFO — [EAR]--test_img_3--Ear #2: Otsu found 75.0 threshold
+2022-01-12 18:05:45,235 — INFO — [EAR]--test_img_3--Ear #2: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:05:45,236 — INFO — [EAR]--test_img_3--Ear #2: Extracting kernel features...
+2022-01-12 18:05:47,800 — INFO — [EAR]--test_img_3--Ear #2: Done extracting kernel features
+2022-01-12 18:05:47,807 — INFO — [EAR]--test_img_3--Ear #2: USDA grading turned off.
+2022-01-12 18:05:47,809 — INFO — [EAR]--test_img_3--Ear #2: Ear proof saved to: ./test/OUT/03_Ear_Proofs/test_img_3_ear_2_proof.png
+2022-01-12 18:05:50,835 — INFO — [EAR]--test_img_3--Ear #2: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:05:50,836 — INFO — [EAR]--test_img_3--Ear #2: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:05:50,836 — INFO — [EAR]--test_img_3--Ear #3: Extracting basic morphological features...
+2022-01-12 18:05:51,049 — INFO — [EAR]--test_img_3--Ear #3: Done extracting basic morphological features
+2022-01-12 18:05:51,060 — INFO — [EAR]--test_img_3--Ear #3: Done extracting image moments
+2022-01-12 18:05:51,072 — INFO — [EAR]--test_img_3--Ear #3: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 103.6
+2022-01-12 18:05:51,073 — INFO — [EAR]--test_img_3--Ear #3: Otsu found 74.0 threshold
+2022-01-12 18:05:51,096 — INFO — [EAR]--test_img_3--Ear #3: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:05:51,097 — INFO — [EAR]--test_img_3--Ear #3: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 103.6
+2022-01-12 18:05:51,097 — INFO — [EAR]--test_img_3--Ear #3: Otsu found 74.0 threshold
+2022-01-12 18:05:51,116 — INFO — [EAR]--test_img_3--Ear #3: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:05:51,118 — INFO — [EAR]--test_img_3--Ear #3: Extracting kernel features...
+2022-01-12 18:05:53,738 — INFO — [EAR]--test_img_3--Ear #3: Done extracting kernel features
+2022-01-12 18:05:53,741 — INFO — [EAR]--test_img_3--Ear #3: USDA grading turned off.
+2022-01-12 18:05:53,744 — INFO — [EAR]--test_img_3--Ear #3: Ear proof saved to: ./test/OUT/03_Ear_Proofs/test_img_3_ear_3_proof.png
+2022-01-12 18:05:56,836 — INFO — [EAR]--test_img_3--Ear #3: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:05:56,843 — INFO — [EAR]--test_img_3--Ear #3: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:05:56,843 — INFO — [EAR]--test_img_3--Collected all ear features.
+2022-01-12 18:16:30,820 — INFO — Namespace(bottom=[], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_2.png', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=[], usda_grade=False)
+2022-01-12 18:16:30,821 — INFO — [START]--test_img_2--Starting analysis pipeline...
+2022-01-12 18:16:31,162 — INFO — [START]--test_img_2--Image is 2624 by 3936 pixels
+2022-01-12 18:16:31,163 — INFO — [QR]--test_img_2--Starting QR code extraction module...
+2022-01-12 18:16:31,897 — INFO — [QR]--test_img_2--Found QRCODE: W201881 on the 1th iteration
+2022-01-12 18:16:31,899 — INFO — [QR]--W201881--Renamed with QRCODE info: W201881
+2022-01-12 18:16:31,899 — INFO — [QR]--W201881--Saved filename and QRcode info to: ./test/OUT/QRcodes.csv
+2022-01-12 18:16:31,899 — INFO — [PPM]--W201881--Looking for solid color square to calculate pixels per metric...
+2022-01-12 18:16:32,004 — INFO — [PPM]--W201881--Found 8.7 pixels per cm
+2022-01-12 18:16:32,004 — INFO — [PPM]--W201881--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 18:16:32,004 — INFO — [COLOR]--W201881--Starting color correction module with provided color checker reference...
+2022-01-12 18:18:20,810 — INFO — Namespace(bottom=[], color_checker='./test/IN/clrchr.png', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_2.png', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=['10', 'cm'], qr_window_size_overlap=None, qrcode=True, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=[], usda_grade=False)
+2022-01-12 18:18:20,810 — INFO — [START]--test_img_2--Starting analysis pipeline...
+2022-01-12 18:18:21,551 — INFO — [START]--test_img_2--Image is 2624 by 3936 pixels
+2022-01-12 18:18:21,551 — INFO — [QR]--test_img_2--Starting QR code extraction module...
+2022-01-12 18:18:22,267 — INFO — [QR]--test_img_2--Found QRCODE: W201881 on the 1th iteration
+2022-01-12 18:18:22,270 — INFO — [QR]--W201881--Renamed with QRCODE info: W201881
+2022-01-12 18:18:22,270 — INFO — [QR]--W201881--Saved filename and QRcode info to: ./test/OUT/QRcodes.csv
+2022-01-12 18:18:22,270 — INFO — [PPM]--W201881--Looking for solid color square to calculate pixels per metric...
+2022-01-12 18:18:22,370 — INFO — [PPM]--W201881--Found 8.7 pixels per cm
+2022-01-12 18:18:22,371 — INFO — [PPM]--W201881--Saved pixels per cm to: ./test/OUT/pixelspermetric.csv
+2022-01-12 18:18:22,371 — INFO — [COLOR]--W201881--Starting color correction module with provided color checker reference...
+2022-01-12 18:18:36,432 — INFO — [EARS]--W201881--Looking for ears...
+2022-01-12 18:18:38,997 — INFO — [EARS]--W201881--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 18:18:38,998 — INFO — [EARS]--W201881--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 18:18:39,031 — INFO — [EARS]--W201881--Found 5 Ear(s) before clean up
+2022-01-12 18:18:39,031 — INFO — [CLNUP]--W201881--Ear clean-up module turned off.
+2022-01-12 18:18:39,283 — INFO — [EARS]--W201881--Ear #1: Min Area: 7.323% Aspect Ratio: 0.13 Solidity score: 0.901
+2022-01-12 18:18:39,289 — INFO — [EARS]--W201881--Ear #2: Min Area: 2.252% Aspect Ratio: 0.3 Solidity score: 0.903
+2022-01-12 18:18:39,294 — INFO — [EARS]--W201881--Ear #3: Min Area: 3.095% Aspect Ratio: 0.25 Solidity score: 0.913
+2022-01-12 18:18:39,301 — INFO — [EARS]--W201881--Ear #4: Min Area: 2.494% Aspect Ratio: 0.26 Solidity score: 0.901
+2022-01-12 18:18:39,316 — INFO — [EARS]--W201881--Ear #5: Min Area: 8.275% Aspect Ratio: 0.15 Solidity score: 0.907
+2022-01-12 18:18:39,320 — INFO — [EARS]--W201881--Found 5 Ear(s) after clean up
+2022-01-12 18:18:42,361 — INFO — [EARS]--W201881--Proof saved to: ./test/OUT/01_Proofs/W201881_proof.png
+2022-01-12 18:18:43,095 — INFO — [SILK]--W201881--Silk clean-up module turned off.
+2022-01-12 18:18:43,095 — INFO — [EAR]--W201881--Ear #1: Checking ear orientation...
+2022-01-12 18:18:43,141 — INFO — [EAR]--W201881--Ear #1: Ear orientation is fine.
+2022-01-12 18:18:43,144 — INFO — [EAR]--W201881--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/W201881_ear_1.png
+2022-01-12 18:18:43,214 — INFO — [SILK]--W201881--Silk clean-up module turned off.
+2022-01-12 18:18:43,214 — INFO — [EAR]--W201881--Ear #2: Checking ear orientation...
+2022-01-12 18:18:43,231 — INFO — [EAR]--W201881--Ear #2: Ear orientation is fine.
+2022-01-12 18:18:43,233 — INFO — [EAR]--W201881--Ear #2: ROI saved to: ./test/OUT/02_Ear_ROIs/W201881_ear_2.png
+2022-01-12 18:18:43,264 — INFO — [SILK]--W201881--Silk clean-up module turned off.
+2022-01-12 18:18:43,265 — INFO — [EAR]--W201881--Ear #3: Checking ear orientation...
+2022-01-12 18:18:43,289 — WARNING — [EAR]--W201881--Ear #3: Ear rotated
+2022-01-12 18:18:43,291 — INFO — [EAR]--W201881--Ear #3: ROI saved to: ./test/OUT/02_Ear_ROIs/W201881_ear_3.png
+2022-01-12 18:18:43,328 — INFO — [SILK]--W201881--Silk clean-up module turned off.
+2022-01-12 18:18:43,328 — INFO — [EAR]--W201881--Ear #4: Checking ear orientation...
+2022-01-12 18:18:43,348 — WARNING — [EAR]--W201881--Ear #4: Ear rotated
+2022-01-12 18:18:43,350 — INFO — [EAR]--W201881--Ear #4: ROI saved to: ./test/OUT/02_Ear_ROIs/W201881_ear_4.png
+2022-01-12 18:18:43,397 — INFO — [SILK]--W201881--Silk clean-up module turned off.
+2022-01-12 18:18:43,397 — INFO — [EAR]--W201881--Ear #5: Checking ear orientation...
+2022-01-12 18:18:43,446 — INFO — [EAR]--W201881--Ear #5: Ear orientation is fine.
+2022-01-12 18:18:43,450 — INFO — [EAR]--W201881--Ear #5: ROI saved to: ./test/OUT/02_Ear_ROIs/W201881_ear_5.png
+2022-01-12 18:18:43,514 — INFO — [EAR]--W201881--Extracting features from 5 ears...
+2022-01-12 18:18:43,514 — INFO — [EAR]--W201881--Ear #1: Extracting basic morphological features...
+2022-01-12 18:18:43,828 — INFO — [EAR]--W201881--Ear #1: Done extracting basic morphological features
+2022-01-12 18:18:43,844 — INFO — [EAR]--W201881--Ear #1: Done extracting image moments
+2022-01-12 18:18:43,868 — INFO — [EAR]--W201881--Ear #1: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 86.8
+2022-01-12 18:18:43,868 — INFO — [EAR]--W201881--Ear #1: Otsu found 62.0 threshold
+2022-01-12 18:18:43,904 — INFO — [EAR]--W201881--Ear #1: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:18:43,906 — INFO — [EAR]--W201881--Ear #1: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 86.8
+2022-01-12 18:18:43,906 — INFO — [EAR]--W201881--Ear #1: Otsu found 62.0 threshold
+2022-01-12 18:18:43,942 — INFO — [EAR]--W201881--Ear #1: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:18:43,943 — INFO — [EAR]--W201881--Ear #1: Extracting kernel features...
+2022-01-12 18:18:46,067 — INFO — [EAR]--W201881--Ear #1: Done extracting kernel features
+2022-01-12 18:18:46,071 — INFO — [EAR]--W201881--Ear #1: USDA grading turned off.
+2022-01-12 18:18:46,076 — INFO — [EAR]--W201881--Ear #1: Ear proof saved to: ./test/OUT/03_Ear_Proofs/W201881_ear_1_proof.png
+2022-01-12 18:18:49,334 — INFO — [EAR]--W201881--Ear #1: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:18:49,334 — INFO — [EAR]--W201881--Ear #1: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:18:49,335 — INFO — [EAR]--W201881--Ear #2: Extracting basic morphological features...
+2022-01-12 18:18:49,490 — INFO — [EAR]--W201881--Ear #2: Done extracting basic morphological features
+2022-01-12 18:18:49,496 — INFO — [EAR]--W201881--Ear #2: Done extracting image moments
+2022-01-12 18:18:49,506 — INFO — [EAR]--W201881--Ear #2: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 135.79999999999998
+2022-01-12 18:18:49,506 — INFO — [EAR]--W201881--Ear #2: Otsu found 97.0 threshold
+2022-01-12 18:18:49,523 — INFO — [EAR]--W201881--Ear #2: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:18:49,524 — INFO — [EAR]--W201881--Ear #2: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 135.79999999999998
+2022-01-12 18:18:49,524 — INFO — [EAR]--W201881--Ear #2: Otsu found 97.0 threshold
+2022-01-12 18:18:49,538 — INFO — [EAR]--W201881--Ear #2: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:18:49,538 — INFO — [EAR]--W201881--Ear #2: Extracting kernel features...
+2022-01-12 18:18:50,659 — INFO — [EAR]--W201881--Ear #2: Done extracting kernel features
+2022-01-12 18:18:50,660 — INFO — [EAR]--W201881--Ear #2: USDA grading turned off.
+2022-01-12 18:18:50,662 — INFO — [EAR]--W201881--Ear #2: Ear proof saved to: ./test/OUT/03_Ear_Proofs/W201881_ear_2_proof.png
+2022-01-12 18:18:53,835 — INFO — [EAR]--W201881--Ear #2: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:18:53,836 — INFO — [EAR]--W201881--Ear #2: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:18:53,836 — INFO — [EAR]--W201881--Ear #3: Extracting basic morphological features...
+2022-01-12 18:18:54,037 — INFO — [EAR]--W201881--Ear #3: Done extracting basic morphological features
+2022-01-12 18:18:54,046 — INFO — [EAR]--W201881--Ear #3: Done extracting image moments
+2022-01-12 18:18:54,059 — INFO — [EAR]--W201881--Ear #3: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 159.6
+2022-01-12 18:18:54,059 — INFO — [EAR]--W201881--Ear #3: Otsu found 114.0 threshold
+2022-01-12 18:18:54,081 — INFO — [EAR]--W201881--Ear #3: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:18:54,082 — INFO — [EAR]--W201881--Ear #3: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 159.6
+2022-01-12 18:18:54,082 — INFO — [EAR]--W201881--Ear #3: Otsu found 114.0 threshold
+2022-01-12 18:18:54,102 — INFO — [EAR]--W201881--Ear #3: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:18:54,103 — INFO — [EAR]--W201881--Ear #3: Extracting kernel features...
+2022-01-12 18:18:55,639 — INFO — [EAR]--W201881--Ear #3: Done extracting kernel features
+2022-01-12 18:18:55,642 — INFO — [EAR]--W201881--Ear #3: USDA grading turned off.
+2022-01-12 18:18:55,644 — INFO — [EAR]--W201881--Ear #3: Ear proof saved to: ./test/OUT/03_Ear_Proofs/W201881_ear_3_proof.png
+2022-01-12 18:18:58,845 — INFO — [EAR]--W201881--Ear #3: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:18:58,845 — INFO — [EAR]--W201881--Ear #3: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:18:58,845 — INFO — [EAR]--W201881--Ear #4: Extracting basic morphological features...
+2022-01-12 18:18:59,033 — INFO — [EAR]--W201881--Ear #4: Done extracting basic morphological features
+2022-01-12 18:18:59,041 — INFO — [EAR]--W201881--Ear #4: Done extracting image moments
+2022-01-12 18:18:59,053 — INFO — [EAR]--W201881--Ear #4: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 158.2
+2022-01-12 18:18:59,054 — INFO — [EAR]--W201881--Ear #4: Otsu found 113.0 threshold
+2022-01-12 18:18:59,071 — INFO — [EAR]--W201881--Ear #4: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:18:59,072 — INFO — [EAR]--W201881--Ear #4: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 158.2
+2022-01-12 18:18:59,073 — INFO — [EAR]--W201881--Ear #4: Otsu found 113.0 threshold
+2022-01-12 18:18:59,091 — INFO — [EAR]--W201881--Ear #4: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:18:59,091 — INFO — [EAR]--W201881--Ear #4: Extracting kernel features...
+2022-01-12 18:19:00,395 — INFO — [EAR]--W201881--Ear #4: Done extracting kernel features
+2022-01-12 18:19:00,397 — INFO — [EAR]--W201881--Ear #4: USDA grading turned off.
+2022-01-12 18:19:00,399 — INFO — [EAR]--W201881--Ear #4: Ear proof saved to: ./test/OUT/03_Ear_Proofs/W201881_ear_4_proof.png
+2022-01-12 18:19:03,334 — INFO — [EAR]--W201881--Ear #4: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:19:03,335 — INFO — [EAR]--W201881--Ear #4: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:19:03,335 — INFO — [EAR]--W201881--Ear #5: Extracting basic morphological features...
+2022-01-12 18:19:03,753 — INFO — [EAR]--W201881--Ear #5: Done extracting basic morphological features
+2022-01-12 18:19:03,772 — INFO — [EAR]--W201881--Ear #5: Done extracting image moments
+2022-01-12 18:19:03,796 — INFO — [EAR]--W201881--Ear #5: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 92.39999999999999
+2022-01-12 18:19:03,796 — INFO — [EAR]--W201881--Ear #5: Otsu found 66.0 threshold
+2022-01-12 18:19:03,839 — INFO — [EAR]--W201881--Ear #5: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:19:03,841 — INFO — [EAR]--W201881--Ear #5: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 92.39999999999999
+2022-01-12 18:19:03,844 — INFO — [EAR]--W201881--Ear #5: Otsu found 66.0 threshold
+2022-01-12 18:19:03,888 — INFO — [EAR]--W201881--Ear #5: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:19:03,889 — INFO — [EAR]--W201881--Ear #5: Extracting kernel features...
+2022-01-12 18:19:05,751 — INFO — [EAR]--W201881--Ear #5: Done extracting kernel features
+2022-01-12 18:19:05,755 — INFO — [EAR]--W201881--Ear #5: USDA grading turned off.
+2022-01-12 18:19:05,761 — INFO — [EAR]--W201881--Ear #5: Ear proof saved to: ./test/OUT/03_Ear_Proofs/W201881_ear_5_proof.png
+2022-01-12 18:19:08,835 — INFO — [EAR]--W201881--Ear #5: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:19:08,836 — INFO — [EAR]--W201881--Ear #5: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:19:08,836 — INFO — [EAR]--W201881--Collected all ear features.
+2022-01-12 18:21:56,916 — INFO — Namespace(bottom=[], color_checker='None', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_1.JPG', kernel_row_number=False, no_proof=False, no_save=False, outdir='./test/OUT/', pixelspermetric=None, qr_window_size_overlap=None, qrcode=False, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=[], usda_grade=False)
+2022-01-12 18:21:56,916 — INFO — [START]--test_img_1--Starting analysis pipeline...
+2022-01-12 18:21:57,027 — INFO — [START]--test_img_1--Image is 1968 by 2944 pixels
+2022-01-12 18:21:57,027 — INFO — [QR]--test_img_1--QR module turned off
+2022-01-12 18:21:57,031 — INFO — [PPM]--test_img_1--Pixels per Metric module turned off
+2022-01-12 18:21:57,034 — INFO — [COLOR]--test_img_1--Color correction module turned off
+2022-01-12 18:21:57,043 — INFO — [EARS]--test_img_1--Looking for ears...
+2022-01-12 18:21:58,215 — INFO — [EARS]--test_img_1--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-01-12 18:21:58,216 — INFO — [EARS]--test_img_1--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-01-12 18:21:58,220 — INFO — [EARS]--test_img_1--Found 1 Ear(s) before clean up
+2022-01-12 18:21:58,220 — INFO — [CLNUP]--test_img_1--Ear clean-up module turned off.
+2022-01-12 18:21:58,379 — INFO — [EARS]--test_img_1--Ear #1: Min Area: 6.051% Aspect Ratio: 0.22 Solidity score: 0.952
+2022-01-12 18:21:58,380 — INFO — [EARS]--test_img_1--Found 1 Ear(s) after clean up
+2022-01-12 18:22:01,418 — INFO — [EARS]--test_img_1--Proof saved to: ./test/OUT/01_Proofs/test_img_1_proof.png
+2022-01-12 18:22:01,776 — INFO — [SILK]--test_img_1--Silk clean-up module turned off.
+2022-01-12 18:22:01,777 — INFO — [EAR]--test_img_1--Ear #1: Checking ear orientation...
+2022-01-12 18:22:01,811 — INFO — [EAR]--test_img_1--Ear #1: Ear orientation is fine.
+2022-01-12 18:22:01,813 — INFO — [EAR]--test_img_1--Ear #1: ROI saved to: ./test/OUT/02_Ear_ROIs/test_img_1_ear_1.png
+2022-01-12 18:22:01,842 — INFO — [EAR]--test_img_1--Extracting features from 1 ears...
+2022-01-12 18:22:01,842 — INFO — [EAR]--test_img_1--Ear #1: Extracting basic morphological features...
+2022-01-12 18:22:02,035 — INFO — [EAR]--test_img_1--Ear #1: Done extracting basic morphological features
+2022-01-12 18:22:02,044 — INFO — [EAR]--test_img_1--Ear #1: Done extracting image moments
+2022-01-12 18:22:02,058 — INFO — [EAR]--test_img_1--Ear #1: Segmenting ear tip with adaptive otsu approach on saturation channel at intensitiy of 1.4...score 121.8
+2022-01-12 18:22:02,058 — INFO — [EAR]--test_img_1--Ear #1: Otsu found 87.0 threshold
+2022-01-12 18:22:02,081 — INFO — [EAR]--test_img_1--Ear #1: Processing tip with 35 tip percent, 1 dialate
+2022-01-12 18:22:02,082 — INFO — [EAR]--test_img_1--Ear #1: Segmenting ear bottom with adaptive otsu approach on saturation channel with default intensity 1.4...score 121.8
+2022-01-12 18:22:02,082 — INFO — [EAR]--test_img_1--Ear #1: Otsu found 87.0 threshold
+2022-01-12 18:22:02,104 — INFO — [EAR]--test_img_1--Ear #1: Processing bottom with 85 bottom percent, 1 dialate,
+2022-01-12 18:22:02,105 — INFO — [EAR]--test_img_1--Ear #1: Extracting kernel features...
+2022-01-12 18:22:03,898 — INFO — [EAR]--test_img_1--Ear #1: Done extracting kernel features
+2022-01-12 18:22:03,901 — INFO — [EAR]--test_img_1--Ear #1: USDA grading turned off.
+2022-01-12 18:22:03,904 — INFO — [EAR]--test_img_1--Ear #1: Ear proof saved to: ./test/OUT/03_Ear_Proofs/test_img_1_ear_1_proof.png
+2022-01-12 18:22:06,849 — INFO — [EAR]--test_img_1--Ear #1: Saved features to: ./test/OUT/features.csv
+2022-01-12 18:22:06,850 — INFO — [EAR]--test_img_1--Ear #1: Saved kernel features to: ./test/OUT/krn_features.csv
+2022-01-12 18:22:06,850 — INFO — [EAR]--test_img_1--Collected all ear features.

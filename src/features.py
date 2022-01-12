@@ -254,7 +254,7 @@ def krnl_feats(ear, tip, bottom, PixelsPerMetric):
 	Bottom_Fill = (Ear_area-Bottom_Area)/Ear_area
 	Krnl_Fill = (Ear_area-Krnl_Area)/Ear_area
 
-	_, cntss, _ = cv2.findContours(uncob, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+	cntss, _ = cv2.findContours(uncob, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 	for cs in cntss:
 		krnl_perimeters = cv2.arcLength(cs,True); krnl_hulls = cv2.convexHull(cs); krnl_hullperimeters = cv2.arcLength(krnl_hulls,True)
 		if krnl_perimeters != 0:

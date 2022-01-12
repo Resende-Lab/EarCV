@@ -13,8 +13,8 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
 from matplotlib import pyplot as plt
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+#import plotly.graph_objects as go
+#from plotly.subplots import make_subplots
 
 
 import utility
