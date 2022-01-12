@@ -8,7 +8,7 @@ EarCV
 A python-based tool for automated maize ear phenotyping
 -------------------------------------------------------
 
-This tool allows the user to rapidly extract features from images containing maize ears against a uniform background. It was designed with the intention of facilitating analysis of thousands of images with a single command prompt. As output, this tool creates a .csv with features for each ear found in the input image(s) and prints several proofs to monitor tool performance.
+This tool allows users to rapidly extract features from images containing maize ears against a uniform background. It was designed with the intention of facilitating analysis of thousands of images with a single command prompt. As output, this tool creates a .csv with features for each ear found in the input image(s) and prints several proofs to monitor tool performance. This packages uses base python, OpenCV 2, PlantCV (Color correction, optional) and Zbar (QR code, optional) functions. 
 
 -----------
 Quick Start
@@ -78,13 +78,118 @@ Usage
 Installation & Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Just download this repo and make sure you have all the dependencies installed on your python environment of choice. This tool uses the folowing packages:
+Clone this repo and make sure you have all the dependencies installed on your python environment of choice. I use virtual environments on linux (Ubuntu) because they make my life way easier. Dependencies:
 
 * OpenCV 2
 * numpy
 * scipy
 * pyzbar (optional, QR code module)
 * plantcv (optional, Color correction module)
+
+* Clone Repo::
+
+ git clone https://github.com/Resende-Lab/EarCV.git
+
+* For simplicity, use pip for simple installation of dependecies::
+
+	sudo apt-get install -y python3-pip
+
+* Create a virtual environment (reccomended). I like 'virtualenv', but you can you any you like or none at all::
+
+	pip install virtualenv virtualenvwrapper
+	nano ~/.bashrc
+
+* Add this to your './bashrc' file::
+
+	# virtualenv and virtualenvwrapper
+	export WORKON_HOME=$HOME/.local/bin/.virtualenvs
+	export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+	export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
+	source $HOME/.local/bin/virtualenvwrapper.sh
+
+* Source your edited './bashrc' file::
+
+	source ~/.bashrc
+
+* Create virtual environment::
+
+	mkvirtualenv OpenCV -p python3
+
+* Install OpenCV 2 using pip::
+
+	pip install opencv-contrib-python
+
+* Test that the installation worked::
+
+	python3 -c "import cv2; print(cv2.__version__)"
+
+If this does not work, then try installing from source. You can look this up on the internet but it is basically:
+
+* Install the build tools and dependencies::
+
+	sudo apt install build-essential cmake git pkg-config libgtk-3-dev \
+	    libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+	    libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev \
+	    gfortran openexr libatlas-base-dev python3-dev python3-numpy \
+	    libtbb2 libtbb-dev libdc1394-22-dev libopenexr-dev \
+	    libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
+
+* Clone the OpenCV’s and OpenCV contrib repositories::
+
+	mkdir ~/opencv_build && cd ~/opencv_build
+	git clone https://github.com/opencv/opencv.git
+	git clone https://github.com/opencv/opencv_contrib.git
+
+* Create a temporary build directory, and navigate to it::
+
+	cd ~/opencv_build/opencv
+	mkdir -p build && cd build
+
+* Set up the OpenCV build with CMake::
+
+	cmake -D CMAKE_BUILD_TYPE=RELEASE \
+	    -D CMAKE_INSTALL_PREFIX=/usr/local \
+	    -D INSTALL_C_EXAMPLES=ON \
+	    -D INSTALL_PYTHON_EXAMPLES=ON \
+	    -D OPENCV_GENERATE_PKGCONFIG=ON \
+	    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_build/opencv_contrib/modules \
+	    -D BUILD_EXAMPLES=ON ..
+
+* Start the compilation process the number after the j correcponds to the number of cores in your processor::
+
+	make -j4
+
+* Install OpenCV with::
+
+	sudo make install
+
+* To verify the installation::
+
+	python3 -c "import cv2; print(cv2.__version__)"
+
+You have installed OpenCV!
+
+To install numpy and scipy using pip:
+
+* Pip install numpy::
+
+	pip3 install numpy
+
+* Then pip install scipy::
+
+	pip3 install scipy
+
+* Verify installation::
+
+	python3 -c "import numpy as np; print(np.__version__) ; import scipy as scipy; print(scipy.__version__)"
+
+To install PlantCV for the color correciton module::
+
+	pip install plantcv
+
+To install Zbar for the QR code module::
+
+	pip install zbar-py
 
 ^^^^^^^^^^^^^
 Main pipeline

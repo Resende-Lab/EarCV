@@ -10,3 +10,11 @@ Version 0.1
 - Fix debugging feature
 - Add 'inches' and 'cm' feature
 - Documentaion?
+
+Version 1.0
+===========
+[To Do]
+- Upload KRN R code
+- Update Manual with intallation intructions and FIgures
+- Remove Stickers feature
+- Test several figures
