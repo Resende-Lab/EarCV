@@ -31,17 +31,17 @@ def options():
 	
 	#Find Ears options
 	parser.add_argument("-thresh", "--threshold", metavar=("[channel]", "[intensity threshold]", "[invert]"), help="Manual ear segmentation module. Use if K fails", nargs=3, required=False)
-	parser.add_argument("-size", "--ear_size", metavar=("[Min area as percent of total image area]", "[Max Area as percent of total image area]"), nargs=2, type=float, help="Ear size filter. Default: Min Area--1.5%, Max Area--15%. Flag with two arguments to customize size filter.")
+	parser.add_argument("-size", "--ear_size", metavar=("[Min area as percent of total image area]", "[Max Area as percent of total image area]"), nargs=2, type=float, help="Ear size filter default: Min Area: 1.5 percent Max Area: 15 percent. Flag with two arguments to customize size filter.")
 	parser.add_argument("-filter", "--ear_filter", metavar=("[Max Aspect Ratio]", "[Max Solidity]"), nargs=2, type=float, help="Ear segmentation filter. Default: Max Aspect Ratio: x < 0.6,  Max Solidity: 0.983. Flag with two arguments to customize ear filter.")
-	
+
 	parser.add_argument("-clnup", "--ear_cleanup", default="None", help="Ear clean-up module. Raise flag to turn on with default settings or provide two arguments: Max Area Coefficient of Variation threshold and Max number of iterations to customize ear clean up module.", nargs='?', const='', required=False)
 	parser.add_argument("-slk", "--silk_cleanup", default="None", help="Silk decontamination module. Raise flag to turn on with default settings or provide two arguments: Min change in covexity and Max number of iterations to customize silk clean up module.", nargs='?', const='', required=False)
 	
 	parser.add_argument("-rot", "--rotation", default=True, action='store_false', help="Raise flag to stop ears from roating.")	
 
 	#Cob and shank segmentation options
-	parser.add_argument("-t", "--tip", nargs='*', help="Tip segmentation module. Usage: '-t': automatic thresholding, and '-t # # # #' for custom segmentation. Flag with four arguments to customize tip segmentation module with the following parameters: Hue/Sat Channel, Thresholding intensity, %, Dialate.")
-	parser.add_argument("-b", "--bottom", nargs='*', help="Bottom segmentation module. Usage: '-b': automatic thresholding, and '-b # # # #' for custom segmentation. Flag with four arguments to customize bottom segmentation module with the following parameters: Hue/Sat Channel, Thresholding intensity, %, Dialate.")
+	parser.add_argument("-t", "--tip", nargs='*', help="Tip segmentation module. Usage: '-t': automatic thresholding, and '-t # # # #' for custom segmentation. Flag with four arguments to customize tip segmentation module with the following parameters: Hue/Sat Channel, Thresholding intensity, percent, Dialate.")
+	parser.add_argument("-b", "--bottom", nargs='*', help="Bottom segmentation module. Usage: '-b': automatic thresholding, and '-b # # # #' for custom segmentation. Flag with four arguments to customize bottom segmentation module with the following parameters: Hue/Sat Channel, Thresholding intensity, percent, Dialate.")
 
 	#KRN call
 	parser.add_argument("-krn", "--kernel_row_number", default=False, action='store_true', help="Raise flag to call KRN peaks for fresh hybrid ears.")	

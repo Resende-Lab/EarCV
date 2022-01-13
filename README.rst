@@ -48,7 +48,7 @@ Now lets run the same image with default cob and shank segmentation::
 
 	python ./src/main.py -i ./test/IN/test_img_1.JPG -o ./test/OUT/ -t -b
 
-Output:
+Output of image proof:
 
 .. image:: ./test/OUT/03_Ear_Proofs/test_img_1_ear_1_proof2.png
 	:height: 100px
@@ -63,12 +63,37 @@ Full feature case:
 
 Let's run an image with all of the features using default settings::
 
-	python ./src/main.py -i ./test/IN/test_img_2.png -o ./test/OUT/ -qr -r -clr ./test/IN/clrchr.png -ppm 10 cm -t -b
+	python ./src/main.py -i ./test/IN/test_img_2.png -o ./test/OUT/ -qr -r -clr ./test/IN/clrchr.png -ppm 10 cm -t -b -krn
 
 Output:
 
-.. image:: ./test/OUT/01_Proofs/test_img_2_proof.png
+.. image:: ./test/OUT/01_Proofs/test_img_2_proof1.png
     :alt: alternate text
+
+As you can see, we segmented the margins of the image. If you check the log file you will see there are 5 objects:
+
+.. image:: ./test/OUT/log_screenshot.png
+    :alt: alternate text
+
+We can use a size, aspect-ratio, or solidity filter to get rid of these. For now let's use a size fitler. Based on the log file, all the ears are under 6% of the image size, set this a max thershold::
+
+	python ./src/main.py -i ./test/IN/test_img_2.png -o ./test/OUT/ -qr -r -clr ./test/IN/clrchr.png -ppm 10 cm -t -b -size 1 6 -krn
+
+Output:
+
+	.. image:: ./test/OUT/01_Proofs/test_img_2_proof2.png
+	    :alt: alternate text
+
+Example of ear proof:
+
+.. image:: ./test/OUT/03_Ear_Proofs/test_img_2_ear_2_proof.png
+	:height: 100px
+	:width: 200 px
+	:scale: 10 %
+	:alt: alternate text
+	:align: right
+
+The image shows proofs of differnt features. From left to right: Ear contour used for shape analysis, length proof, width and curvature proof, tip and cob fill proof, average color proof, and KRN proof (red lines show KRN calls not used in analysis, purple lines show calls that pass quality control).
 
 ------------
 Installation
