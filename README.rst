@@ -24,7 +24,6 @@ Run tests from the main ''EarCV/'' folder contianing this repo. Let's use images
 Simplest case:
 ^^^^^^^^^^^^^^
 Image only containing a single ear::
-
 	python ./src/main.py -i ./test/IN/test_img_1.JPG -o ./test/OUT/
 
 Output:
@@ -45,7 +44,6 @@ Output:
 
 
 Now lets run the same image with default cob and shank segmentation::
-
 	python ./src/main.py -i ./test/IN/test_img_1.JPG -o ./test/OUT/ -t -b
 
 Output:
@@ -62,7 +60,6 @@ Full feature case:
 ^^^^^^^^^^^^^^^^^^
 
 Let's run an image with all of the features using default settings::
-
 	python ./src/main.py -i ./test/IN/test_img_2.png -o ./test/OUT/ -qr -r -clr ./test/IN/clrchr.png -ppm 10 cm -t -b
 
 Output:
@@ -78,27 +75,24 @@ Installation
 Dependencies
 ^^^^^^^^^^^^
 
-Clone this repo and make sure you have all the dependencies installed on your python environment of choice. Instructions below are use Linux (Ubuntu).
+Clone this repo and make sure you have all the dependencies installed on your python environment of choice. Instructions below are for Linux (Ubuntu). You can use EarCV with WIndows or MacOS as well, instllation of dependencies will vary slightly.
 
 Dependencies:
 
 * OpenCV 2
-* numpy
-* scipy
-* pyzbar (optional, QR code module)
+* Numpy
+* Scipy
+* Py-zbar (optional, QR code module)
 * PlantCV (optional, Color correction module)
 
 For simplicity, use pip for installation of dependecies::
-
 	sudo apt-get install -y python3-pip
 
 I reccomend you use a virtual environment. I like 'virtualenv', but you can use any you like or none at all::
-
 	pip install virtualenv virtualenvwrapper
 	nano ~/.bashrc
 
 Add this to your './bashrc' file::
-
 	# virtualenv and virtualenvwrapper
 	export WORKON_HOME=$HOME/.local/bin/.virtualenvs
 	export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -106,13 +100,12 @@ Add this to your './bashrc' file::
 	source $HOME/.local/bin/virtualenvwrapper.sh
 
 Source your edited './bashrc' file::
-
 	source ~/.bashrc
 
 ^^^^^^^^^^
 Clone Repo
 ^^^^^^^^^^
-::
+Use this::
 	git clone https://github.com/Resende-Lab/EarCV.git
 
 ^^^^^^^^^^^^^^
@@ -120,41 +113,33 @@ Install OpenCV
 ^^^^^^^^^^^^^^
 
 Create virtual environment::
-
 	mkvirtualenv OpenCV -p python3
 
 Install OpenCV 2 using pip::
-
 	pip install opencv-contrib-python
 
 Test that the installation worked::
-
 	python3 -c "import cv2; print(cv2.__version__)"
 
-You have installed OpenCV! If this does not work, then try installing from source. You can look this up depending on the operating system you suse.
+You have installed OpenCV! If this does not work, then try installing from source. You can look this up depending on the operating system you use.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Install Numpy, Scipy, PlantCV, Zbar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pip install numpy::
-
 	pip3 install numpy
 
 Pip install scipy::
-
 	pip3 install scipy
 
 Verify installation::
-
 	python3 -c "import numpy as np; print(np.__version__) ; import scipy as scipy; print(scipy.__version__)"
 
 To install PlantCV for the color correciton module::
-
 	pip install plantcv
 
 To install Zbar for the QR code module::
-
 	sudo apt-get install libzbar0
 
 -----
