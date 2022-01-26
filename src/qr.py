@@ -15,6 +15,7 @@ import cv2
 import sys
 import numpy as np
 import utility
+import find_ears
 from pyzbar.pyzbar import decode
 
 
@@ -74,7 +75,7 @@ def qr_scan(qr_img, qr_window_size, overlap, debug):
 
 	id = []
 	qr_count = 1
-	QRcodeType = QRcodeData = QRcodeRect = qr_proof =None
+	QRcodeType = QRcodeData = QRcodeRect = qr_proof = removesticker =None
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Scan entire image for QRcode
 	if qr_window_size is None:
 
@@ -104,7 +105,53 @@ def qr_scan(qr_img, qr_window_size, overlap, debug):
 				QRcodeRect = QRcode.rect
 				QRcodeData = QRcode.data.decode("utf-8")
 				QRcodeType = QRcode.type
-	
+			#try to remove sticker 
+			(x, y, w, h) = QRcodeRect
+			removesticker = np.zeros_like(mask)
+			qr_center_y = y+int(w/2)
+			qr_center_x = x+int(h/2)
+
+			#revisit this!!!!!
+			removesticker = cv2.rectangle(removesticker, (qr_center_x-int(3*h),qr_center_y-int(3*h)), (qr_center_x+int(3*w),qr_center_y+int(3*w)), 255, -1)	
+			removesticker = cv2.bitwise_and(removesticker, mask)
+			removesticker = utility.cnctfill(removesticker)
+			qr_img[removesticker == 255] = 0
+
+
+
+			#im_mask = cv2.cvtColor(qr_img, cv2.COLOR_BGR2GRAY)
+
+			#cv2.namedWindow('[DEBUG] [QR] Scanning QRcode', cv2.WINDOW_NORMAL)
+			#cv2.resizeWindow('[DEBUG] [QR] Scanning QRcode', 1000, 1000)
+			#cv2.imshow('[DEBUG] [QR] Scanning QRcode', im_mask); cv2.waitKey(2000); cv2.destroyAllWindows()
+
+
+			#res,labels,stats,centroids = cv2.connectedComponentsWithStats(im_mask)
+			#np.random.seed(0)
+			#frame = np.random.rand(im_mask.shape[0],im_mask.shape[1],3)
+			#print(frame)
+
+			#b,g,r = cv2.split(removesticker)		
+			#otsu,_ = cv2.threshold(removesticker, 0, 255, cv2.THRESH_OTSU)
+			#cnts = cv2.findContours(otsu, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+			#m#ask = np.zeros_like(binary)
+			#i = 0
+			#for c in cnts:
+			#	ear_area = cv2.contourArea(c)
+			#	hulls = cv2.convexHull(c); hull_areas = cv2.contourArea(hulls)
+			#	ear_solidity = float(ear_area)/hull_areas
+			#	rects = cv2.minAreaRect(c)
+			#	width_i = int(rects[1][0])
+			#	height_i = int(rects[1][1])
+			#	if height_i > width_i:
+			#		rat = round(width_i/height_i, 2)
+			#	else:
+			#		rat = round(height_i/width_i, 2)
+			#	print(ear_area, ear_solidity, rat, i)
+			#	i += 1
+
+			
+
 	else:
 		qr_count = 0		
 		img_h, img_w, _ = qr_img.shape
@@ -149,11 +196,25 @@ def qr_scan(qr_img, qr_window_size, overlap, debug):
 						QRcodeRect = QRcode.rect
 						QRcodeData = QRcode.data.decode("utf-8")
 						QRcodeType = QRcode.type	
+
+					#try to remove sticker 
+					(x, y, w, h) = QRcodeRect
+					removesticker = np.zeros_like(mask)
+					qr_center_y = y+int(w/2)
+					qr_center_x = x+int(h/2)
+					removesticker = cv2.rectangle(removesticker, (qr_center_y-(2*w),qr_center_y+(2*w)), (qr_center_x-(2*h),qr_center_x+(2*h)), 255, -1)
+					removesticker = cv2.bitwise_and(removesticker, mask)
+					removesticker = utility.cnctfill(removesticker)
 					break
 			else:		
 				continue
 			break
-	return QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof
+	return QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof, removesticker
+
+#def remove_qr_sticker(QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof):
+
+
+
 
 if __name__ == "__main__":
 	print("You are running qr.py solo...")

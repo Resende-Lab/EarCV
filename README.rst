@@ -181,6 +181,10 @@ To install PlantCV for the color correciton module::
 
 To install Zbar for the QR code module::
 
+	pip install pyzbar
+
+If this does not work, then try::
+
 	sudo apt-get install libzbar0
 
 -----

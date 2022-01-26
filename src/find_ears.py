@@ -40,8 +40,8 @@ def kmeans(img):
 	return bkgrnd
 
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~Filter connected components with area, aspect:ratio, and solidity	
-def filter(filename, binary, min_area, max_area, aspect_ratio, solidity):
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~Filter connected components with area, aspect,ratio, and solidity	
+def filter(filename, binary, min_area, max_area, min_aspect_ratio, max_aspect_ratio, min_solidity, max_solidity):
 	#log = args_log.get_logger("logger")
 
 	cnts = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); cnts = cnts[0] if len(cnts) == 2 else cnts[1]
@@ -59,7 +59,7 @@ def filter(filename, binary, min_area, max_area, aspect_ratio, solidity):
 				rat = round(width_i/height_i, 2)
 			else:
 				rat = round(height_i/width_i, 2)
-			if 0.1 < rat < aspect_ratio and 0.1 < ear_solidity < solidity: 
+			if min_aspect_ratio < rat < max_aspect_ratio and min_solidity < ear_solidity < max_solidity: 
 				cv2.drawContours(mask, [c], -1, (255), -1)
 				i = i+1
 

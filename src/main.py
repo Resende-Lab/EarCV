@@ -178,7 +178,7 @@ def main():
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 	if args.qrcode is True or args.qr_window_size_overlap is not None:	# Turn module on
-		QRcodeType = QRcodeData = QRcodeRect = qr_window_size = overlap = qr_proof = None 	# Empty variables
+		QRcodeType = QRcodeData = QRcodeRect = qr_window_size = overlap = qr_proof = removesticker = None 	# Empty variables
 		log.info("[QR]--{}--Starting QR code extraction module...".format(filename))		# Log
 
 		if args.qr_window_size_overlap is not None:								# Turn flag on to break image into subsections and flag each sub section and read in each variable
@@ -186,7 +186,7 @@ def main():
 			overlap = args.qr_window_size_overlap[1]
 			log.info("[QR]--{}--Dividing image into windows of {} by {} pixels with overlap {}".format(filename, qr_window_size, qr_window_size, overlap))
 			
-		QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof = qr.qr_scan(img, qr_window_size, overlap, args.debug)	# Run the qr.py module
+		QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof, removesticker = qr.qr_scan(img, qr_window_size, overlap, args.debug)	# Run the qr.py module
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~QRCODE output~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 		if QRcodeData is None:										
@@ -199,8 +199,9 @@ def main():
 			(x, y, w, h) = QRcodeRect											# Pull coordinates for barcode location
 			cv2.rectangle(qr_proof, (x, y), (x + w, y + h), (0, 0, 255), 20)	#Draw a box around the found QR code
 			
-			if args.qr_window_size_overlap is None:
-				cv2.rectangle(img, (x-40, y-40), (x + w + 320, y + h + 40), (0, 0, 0), -1)		# Remove qr code from image if you used the entire image
+			#remove sticker form image		
+			removesticker = cv2.dilate(removesticker,np.ones((5,5),np.uint8),iterations = 5)
+			img[removesticker != 0] = 0
 
 			if args.debug is True:											# Print proof with QR code
 				cv2.namedWindow('[DEBUG] [QR] QRcode Proof', cv2.WINDOW_NORMAL)
@@ -227,7 +228,6 @@ def main():
 		log.info("[QR]--{}--QR module turned off".format(filename))
 		qr_proof = mask = np.zeros_like(img)
 		cv2.putText(qr_proof, "QR module off", (int(500), int(500)), cv2.FONT_HERSHEY_SIMPLEX, 7, (0, 0, 255), 15)	
-
 
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -360,15 +360,19 @@ def main():
 		max_area = img_area*0.150
 
 	if args.ear_filter is not None:
-		log.info("[EARS]--{}--Filtering ears with custom settings: 0.19 < Aspect Ratio < {}, Solidity < {}".format(filename, args.ear_filter[0], args.ear_filter[1]))
-		aspect_ratio = args.ear_filter[0]
-		solidity = args.ear_filter[1]
+		log.info("[EARS]--{}--Filtering ears with custom settings: {} < Aspect Ratio < {}, {} Solidity < {}".format(filename, args.ear_filter[0], args.ear_filter[1], args.ear_filter[2], args.ear_filter[3]))
+		min_aspect_ratio = args.ear_filter[0]
+		max_aspect_ratio = args.ear_filter[1]
+		min_solidity = args.ear_filter[2]
+		max_solidity = args.ear_filter[3]
 	else:
-		aspect_ratio = 0.6
-		solidity = 0.983
+		min_aspect_ratio = 0.19
+		max_aspect_ratio = 0.6
+		min_solidity = 0.74
+		max_solidity = 0.983
 		log.info("[EARS]--{}--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983".format(filename))
 	
-	filtered, ear_number = find_ears.filter(filename, bkgrnd, min_area, max_area, aspect_ratio, solidity)		# Run the filter module
+	filtered, ear_number = find_ears.filter(filename, bkgrnd, min_area, max_area, min_aspect_ratio, max_aspect_ratio, min_solidity, max_solidity)		# Run the filter module
 
 	log.info("[EARS]--{}--Found {} Ear(s) before clean up".format(filename, ear_number))
 
@@ -996,22 +1000,24 @@ def main():
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 		##################################### Features CSV  ######################################
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create CSV
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create full feature CSV
 		if args.no_save is False:			
-			csvname = out + 'features' +'.csv'
+			csvname = out + 'all_features' +'.csv'
 			file_exists = os.path.isfile(csvname)
 			with open (csvname, 'a') as csvfile:
-				headers = ['Filename', 'Units', 'Ear Number', 'Ear_Area', 'Ear_Box_Area', 'Ear_Box_Length', 'Ear_Extreme_Length', 'Ear_Box_Width', 'Max_Width', 'MA_Ellipse', 'ma_Ellipse', 'Perimeter', 
-							'Convexity', 'Solidity', 'Convexity_polyDP', 'Taper', 'Taper_Convexity', 'Taper_Solidity', 'Taper_Convexity_polyDP', 
-							'Widths_Sdev', 'Curvature', 'Tip_Area', 'Bottom_Area', 'Krnl_Area', 'Kernel_Length', 'Krnl_Convexity', 'Tip_Fill', 
-							'Bottom_Fill', 'Krnl_Fill', 'KRN_Pred', 'Mean_Kernel_Width', 'KRN_Boundaries', 'KRN_Std_Dev', 'USDA_Grade_Len', 'USDA_Grade_Fill' ,'Blue', 'Red', 'Green', 'Hue', 'Sat', 'Vol', 'Light', 'A_chnnl', 'B_chnnl']  
-
+				headers = ['Filename', 'PixelsPerMetric', 'Units', 'Ear Number', 'Ear_Area', 'Ear_Box_Area', 'Ear_Box_Length', 'Ear_Extreme_Length', 'Ear_Box_Width',
+							'Max_Width', 'MA_Ellipse', 'ma_Ellipse', 'Perimeter', 'Convexity', 'Solidity', 'Convexity_polyDP', 'Taper',
+							'Taper_Convexity', 'Taper_Solidity', 'Taper_Convexity_polyDP', 'Widths_Sdev', 'Curvature', 'Tip_Area', 'Bottom_Area',
+							'Krnl_Area', 'Kernel_Length', 'Krnl_Convexity', 'Tip_Fill', 'Bottom_Fill', 'Krnl_Fill', 'KRN_Pred', 'Mean_Kernel_Width',
+							'KRN_Boundaries', 'KRN_Std_Dev', 'USDA_Grade_Len', 'USDA_Grade_Fill' ,'Blue', 'Red', 'Green', 'Hue', 'Sat', 'Vol', 'Light',
+							'A_chnnl', 'B_chnnl', 'm00','m10','m01','m20','m11','m02','m30','m21','m12','m03','mu20','mu11','mu02','mu30','mu21',
+							'mu12','mu03','nu20','nu11','nu02','nu30','nu21','nu12','nu03'] 
 
 				writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=headers)
 				if not file_exists:
 					writer.writeheader()  # file doesn't exist yet, write a header	
 
-				writer.writerow({'Filename': filename, 'Units': Units, 'Ear Number': n, 'Ear_Area': Ear_Area, 'Ear_Box_Area': Ear_Box_Area,
+				writer.writerow({'Filename': filename, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'Ear Number': n, 'Ear_Area': Ear_Area, 'Ear_Box_Area': Ear_Box_Area,
 								 'Ear_Box_Length': Ear_Box_Length, 'Ear_Extreme_Length': Ear_Extreme_Length, 'Ear_Box_Width': Ear_Box_Width,
 								 'Max_Width': max_Width, 'MA_Ellipse': MA, 'ma_Ellipse': ma, 'Perimeter': perimeters,
 								 'Convexity': Convexity , 'Solidity': Solidity, 'Convexity_polyDP': Convexity_polyDP, 'Taper': Taper,
@@ -1020,12 +1026,33 @@ def main():
 							     'Krnl_Area': Krnl_Area, 'Kernel_Length': Kernel_Length , 'Krnl_Convexity': Krnl_Convexity, 'Tip_Fill': Tip_Fill, 
 								 'Bottom_Fill': Bottom_Fill, 'Krnl_Fill': Krnl_Fill , 'KRN_Pred': KRN, 'KRN_Boundaries': KRN_Boundaries, 'Mean_Kernel_Width': Mean_Kernel_Width,
 								 'KRN_Std_Dev': KRN_Std_Dev, 'USDA_Grade_Len': USDA_Grade_Len, 'USDA_Grade_Fill': USDA_Grade_Fill, 'Blue': Blue , 'Red': Red , 'Green': Green , 'Hue': Hue, 'Sat': Sat,
-								 'Vol': Vol , 'Light': Light , 'A_chnnl': A_chnnl , 'B_chnnl': B_chnnl})
+								 'Vol': Vol , 'Light': Light , 'A_chnnl': A_chnnl , 'B_chnnl': B_chnnl, 'm00': moments['m00'],'m10': moments['m10'],'m01': moments['m01'],'m20': moments['m20'],'m11': moments['m11'],
+								 'm02': moments['m02'],'m30': moments['m30'],'m21': moments['m21'],'m12': moments['m12'],'m03': moments['m03'],'mu20': moments['mu20'],
+								 'mu11': moments['mu11'],'mu02': moments['mu02'],'mu30': moments['mu30'],'mu21': moments['mu21'],'mu12': moments['mu12'],'mu03': moments['mu03'],
+								 'nu20': moments['nu20'],'nu11': moments['nu11'],'nu02': moments['nu02'],'nu30': moments['nu30'],'nu21': moments['nu21'],'nu12': moments['nu12'],'nu03': moments['nu03']})
 
-			log.info("[EAR]--{}--Ear #{}: Saved features to: {}features.csv".format(filename, n, out))
+			log.info("[EAR]--{}--Ear #{}: Saved all features to: {}all_features.csv".format(filename, n, out))
 
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create Condensed Featureset
+		if args.no_save is False:
+			csvname = out + 'features_condensed' +'.csv'
+			file_exists = os.path.isfile(csvname)
+			with open (csvname, 'a') as csvfile:
+				headers = ['Filename', 'PixelsPerMetric', 'Units', 'QR_Code', 'Ear_Number', 'Ear_Area', 
+							'Ear_Length', 'Ear_Width','Solidity','Convexity_polyDP','Taper',
+							'Curvature', 'Krnl_Area', 'Tip_Fill', 'Predicted_KRN']
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create KRN CSV tp run XGBOOST
+				writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=headers)
+				if not file_exists:
+					writer.writeheader()  # file doesn't exist yet, write a header
+
+				writer.writerow({'Filename': filename, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'QR_Code': QRcodeData , 'Ear_Number': n, 'Ear_Area': Ear_Area, 'Ear_Length': Ear_Extreme_Length, 'Ear_Width': max_Width,
+								 'Solidity': Solidity, 'Convexity_polyDP': Convexity_polyDP, 'Taper': Taper_Convexity_polyDP, 
+							     'Curvature': Widths_Sdev, 'Krnl_Area': Krnl_Area, 'Tip_Fill': Krnl_Fill , 'Predicted_KRN': KRN})
+
+			log.info("[EAR]--{}--Ear #{}: Saved condensed features to: {}features_condensed.csv".format(filename, n, out))
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create KRN CSV tp run XGBOOST
 		if args.no_save is False:			
 			csvname = out + 'krn_features' +'.csv'
 			file_exists = os.path.isfile(csvname)
