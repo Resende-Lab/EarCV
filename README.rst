@@ -447,11 +447,11 @@ Scans image for QR code and extracts information using pyzbar's decode function.
 
 	Example 1::
 
-		python qr.py test_img_2.png None None False
+		python ./src/qr.py ./test/IN/test_img_2.png None None False
 
 	Example 2::
 
-		python qr.py test_img_2.png 2000 0.01 True
+		python ./src/qr.py ./test/IN/test_img_2.png 2000 0.01 True
 
 
 ----------------

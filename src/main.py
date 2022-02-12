@@ -442,6 +442,47 @@ def main():
 	ears = img.copy()
 	ears[filtered == 0] = 0
 
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+	###################################  Remove white paper ##################################
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+	cnts = cv2.findContours(filtered, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+	boundingBoxes = [cv2.boundingRect(c) for c in cnts]
+#Sort left to right
+	(cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes), key=lambda b:b[1][0], reverse= False))
+#Count the number of ears and number them on proof
+	number_of_ears = 0
+	ear_masks = []
+	#array to remove white things
+	white = []
+	for c in cnts:
+		number_of_ears = number_of_ears+1
+#Create ROI and find tip
+		rects = cv2.minAreaRect(c)
+		width_i = int(rects[1][0])
+		height_i = int(rects[1][1])
+		boxs = cv2.boxPoints(rects)
+		boxs = np.array(boxs, dtype="int")
+		src_pts_i = boxs.astype("float32")
+		dst_pts_i = np.array([[0, height_i-1],[0, 0],[width_i-1, 0],[width_i-1, height_i-1]], dtype="float32")
+		M_i = cv2.getPerspectiveTransform(src_pts_i, dst_pts_i)
+		ear = cv2.warpPerspective(ears, M_i, (width_i, height_i))
+		n_colors = 2
+		pixels = np.float32(ear.reshape(-1, 3))
+		criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
+		flags = cv2.KMEANS_RANDOM_CENTERS
+		_, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
+		_, counts = np.unique(labels, return_counts=True)
+		dominant = palette[np.argmax(counts)]
+		Red = dominant[0]
+		Green = dominant[1]
+		Blue = dominant[2]
+		#print(Red+Green+Blue)
+		if Red+Green+Blue > 685:
+			white.append(number_of_ears)
+		#print(white)
+	log.info("[EARS]--{}--Detected {} white artifacts (qr stickr or white paper) removing...".format(filename, len(white)))
+	white = [x - 1 for x in white]
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 	###################################  Sort ears module ####################################
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -450,6 +491,12 @@ def main():
 	#print(boundingBoxes)
 #Sort left to right
 	(cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes), key=lambda b:b[1][0], reverse= False))
+#Remove any white objects:
+	for x in white:
+		if x == 0:
+			cnts = cnts[1:]
+		else:
+			cnts = cnts[:x] + cnts[x+1:]
 #Count the number of ears and number them on proof
 	number_of_ears = 0
 	ear_masks = []
@@ -532,9 +579,14 @@ def main():
 			except OSError as e:
 				if e.errno != errno.EEXIST:
 					raise
-		destin = "{}".format(out) + "01_Proofs/" + filename + "_proof.png"
-		log.info("[EARS]--{}--Proof saved to: {}".format(filename, destin))
-		cv2.imwrite(destin, ears_proof)
+		if args.lowres_proof is False:
+			destin = "{}".format(out) + "01_Proofs/" + filename + "_proof.png"
+			log.info("[EARS]--{}--Proof saved to: {}".format(filename, destin))
+			cv2.imwrite(destin, ears_proof)
+		else:
+			destin = "{}".format(out) + "01_Proofs/" + filename + "_proof.jpg"
+			log.info("[EARS]--{}--Low resolution proof saved to: {}".format(filename, destin))
+			cv2.imwrite(destin, ears_proof, [int(cv2.IMWRITE_JPEG_QUALITY), 50])
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 	##################################  Clean silks module  ##################################
@@ -699,7 +751,7 @@ def main():
 					os.mkdir(destin)
 				except OSError as e:
 					if e.errno != errno.EEXIST:
-						raise			
+						raise
 			destin = "{}02_Ear_ROIs/{}_ear_{}".format(out, filename, n) + ".png"
 			log.info("[EAR]--{}--Ear #{}: ROI saved to: {}".format(filename, n, destin))			
 			cv2.imwrite(destin, ear_trans)
@@ -987,10 +1039,17 @@ def main():
 					os.mkdir(destin)
 				except OSError as e:
 					if e.errno != errno.EEXIST:
-						raise			
-			destin = "{}03_Ear_Proofs/{}_ear_{}_proof".format(out, filename, n) + ".png"
-			log.info("[EAR]--{}--Ear #{}: Ear proof saved to: {}".format(filename, n, destin))			
-			cv2.imwrite(destin, ear_proof)
+						raise
+			if args.lowres_proof is False:			
+				destin = "{}03_Ear_Proofs/{}_ear_{}_proof".format(out, filename, n) + ".png"
+				log.info("[EAR]--{}--Ear #{}: Ear proof saved to: {}".format(filename, n, destin))			
+				cv2.imwrite(destin, ear_proof)
+			else:
+				destin = "{}03_Ear_Proofs/{}_ear_{}_proof".format(out, filename, n) + ".jpg"
+				log.info("[EAR]--{}--Ear #{}: Low resolution ear proof saved to: {}".format(filename, n, destin))			
+				cv2.imwrite(destin, ear_proof, [int(cv2.IMWRITE_JPEG_QUALITY), 50])
+
+
 
 		if args.no_proof is False or args.debug is True:
 			cv2.namedWindow('[Ear] Final Proof', cv2.WINDOW_NORMAL)

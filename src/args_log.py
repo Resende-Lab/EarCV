@@ -16,7 +16,8 @@ def options():
 	parser.add_argument("-o", "--outdir", help="Provide directory to saves proofs, logfile, and output CSVs. Default: Will save in current directory if not provided.")
 	parser.add_argument("-ns", "--no_save", default=False, action='store_true', help="Default saves proofs and output CSVs. Raise flag to stop saving.")
 	parser.add_argument("-np", "--no_proof", default=False, action='store_true', help="Default prints proofs on screen. Raise flag to stop printing proofs.")
-	parser.add_argument("-D", "--debug", default=False, action='store_true', help="Raise flag to print intermediate images throughout analysis. Useful for troubleshooting.")	
+	parser.add_argument("-D", "--debug", default=False, action='store_true', help="Raise flag to print intermediate images throughout analysis. Useful for troubleshooting.")
+	parser.add_argument("-lowres", "--lowres_proof", default=False, action='store_true', help="Raise flag to save proofs in jpg format to save space. ROIs still saves as full resolution '.png'. Must be used with the -ns flag turned off.")	
 
 	#QR code options
 	parser.add_argument("-qr", "--qrcode", default=False, action='store_true', help="Raise flag to scan entire image for QR code.")	

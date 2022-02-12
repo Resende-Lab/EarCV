@@ -292,8 +292,6 @@ def dominant_cols(krnl, pixels):
 	lab = cv2.cvtColor(krnl, cv2.COLOR_BGR2LAB)
 	lab[krnl == 0] = 0
 
-
-
 	criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
 	flags = cv2.KMEANS_RANDOM_CENTERS
 	_, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)

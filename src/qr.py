@@ -116,42 +116,6 @@ def qr_scan(qr_img, qr_window_size, overlap, debug):
 			removesticker = cv2.bitwise_and(removesticker, mask)
 			removesticker = utility.cnctfill(removesticker)
 			qr_img[removesticker == 255] = 0
-
-
-
-			#im_mask = cv2.cvtColor(qr_img, cv2.COLOR_BGR2GRAY)
-
-			#cv2.namedWindow('[DEBUG] [QR] Scanning QRcode', cv2.WINDOW_NORMAL)
-			#cv2.resizeWindow('[DEBUG] [QR] Scanning QRcode', 1000, 1000)
-			#cv2.imshow('[DEBUG] [QR] Scanning QRcode', im_mask); cv2.waitKey(2000); cv2.destroyAllWindows()
-
-
-			#res,labels,stats,centroids = cv2.connectedComponentsWithStats(im_mask)
-			#np.random.seed(0)
-			#frame = np.random.rand(im_mask.shape[0],im_mask.shape[1],3)
-			#print(frame)
-
-			#b,g,r = cv2.split(removesticker)		
-			#otsu,_ = cv2.threshold(removesticker, 0, 255, cv2.THRESH_OTSU)
-			#cnts = cv2.findContours(otsu, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); cnts = cnts[0] if len(cnts) == 2 else cnts[1]
-			#m#ask = np.zeros_like(binary)
-			#i = 0
-			#for c in cnts:
-			#	ear_area = cv2.contourArea(c)
-			#	hulls = cv2.convexHull(c); hull_areas = cv2.contourArea(hulls)
-			#	ear_solidity = float(ear_area)/hull_areas
-			#	rects = cv2.minAreaRect(c)
-			#	width_i = int(rects[1][0])
-			#	height_i = int(rects[1][1])
-			#	if height_i > width_i:
-			#		rat = round(width_i/height_i, 2)
-			#	else:
-			#		rat = round(height_i/width_i, 2)
-			#	print(ear_area, ear_solidity, rat, i)
-			#	i += 1
-
-			
-
 	else:
 		qr_count = 0		
 		img_h, img_w, _ = qr_img.shape
@@ -165,22 +129,9 @@ def qr_scan(qr_img, qr_window_size, overlap, debug):
 			for j in X_points:
 				split = qr_img[i:i+split_height, j:j+split_width]
 				qr_count += 1
-				#mask = cv2.inRange(split,(0,0,0),(200,200,200))
-				#thresholded = cv2.cvtColor(mask,cv2.COLOR_GRAY2BGR)
-				#inverted = 255-thresholded # black-in-white
-				#~~~~
-				#split = cv2.cvtColor(split,cv2.COLOR_BGR2GRAY)
-				#_,mask = cv2.threshold(split, 0, 255, cv2.THRESH_OTSU)
-				
-				#try a few things here
 				b,g,r = cv2.split(split)		
-				#qr_img = cv2.cvtColor(qr_img,cv2.COLOR_BGR2GRAY)
 				otsu,_ = cv2.threshold(g, 0, 255, cv2.THRESH_OTSU)
 				mask = cv2.threshold(g, int(otsu*1.30),256, cv2.THRESH_BINARY)[1]
-				#print(thresh)
-
-
-
 				thresholded = cv2.cvtColor(mask,cv2.COLOR_GRAY2BGR)				
 				inverted = thresholded
 
@@ -211,10 +162,6 @@ def qr_scan(qr_img, qr_window_size, overlap, debug):
 			break
 	return QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof, removesticker
 
-#def remove_qr_sticker(QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof):
-
-
-
 
 if __name__ == "__main__":
 	print("You are running qr.py solo...")
@@ -240,7 +187,7 @@ if __name__ == "__main__":
 	else:
 		debug = False		
 	
-	QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof = qr_scan(img, qr_window_size, overlap, debug) # Run the qr.py module
+	QRcodeType, QRcodeData, QRcodeRect, qr_count, qr_proof, removesticker = qr_scan(img, qr_window_size, overlap, debug) # Run the qr.py module
 	
 	if QRcodeData == None:
 		print("[QR]--{}--No QRcode found".format(filename))	# Log
