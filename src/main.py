@@ -226,6 +226,7 @@ def main():
 			
 	else:
 		log.info("[QR]--{}--QR module turned off".format(filename))
+		QRcodeType = QRcodeData = QRcodeRect = qr_window_size = overlap = qr_proof = removesticker = None
 		qr_proof = mask = np.zeros_like(img)
 		cv2.putText(qr_proof, "QR module off", (int(500), int(500)), cv2.FONT_HERSHEY_SIMPLEX, 7, (0, 0, 255), 15)	
 
