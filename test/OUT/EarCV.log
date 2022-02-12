@@ -271,3 +271,30 @@
 2022-01-13 14:51:26,758 — INFO — [EAR]--test_img_2--Ear #3: Saved features to: ./test/OUT/features.csv
 2022-01-13 14:51:26,759 — INFO — [EAR]--test_img_2--Ear #3: Saved kernel features to: ./test/OUT/krn_features.csv
 2022-01-13 14:51:26,759 — INFO — [EAR]--test_img_2--Collected all ear features.
+2022-02-11 22:00:21,850 — INFO — Namespace(bottom=None, color_checker='None', debug=False, ear_cleanup='None', ear_filter=None, ear_size=None, image='./test/IN/test_img_1.JPG', kernel_row_number=False, lowres_proof=False, no_proof=True, no_save=True, outdir='./test/OUT/', pixelspermetric=None, qr_window_size_overlap=None, qrcode=False, rename=True, rotation=True, silk_cleanup='None', threshold=None, tip=None, usda_grade=False)
+2022-02-11 22:00:21,851 — INFO — [START]--test_img_1--Starting analysis pipeline...
+2022-02-11 22:00:21,940 — INFO — [START]--test_img_1--Image is 1968 by 2944 pixels
+2022-02-11 22:00:21,940 — INFO — [QR]--test_img_1--QR module turned off
+2022-02-11 22:00:21,943 — INFO — [PPM]--test_img_1--Pixels per Metric module turned off
+2022-02-11 22:00:21,947 — INFO — [COLOR]--test_img_1--Color correction module turned off
+2022-02-11 22:00:21,954 — INFO — [EARS]--test_img_1--Looking for ears...
+2022-02-11 22:00:23,144 — INFO — [EARS]--test_img_1--Segmenting ears with default size filter: Min Area: 1.5%, Max Area: 15%
+2022-02-11 22:00:23,144 — INFO — [EARS]--test_img_1--Filtering ears with default settings: 0.19 < Aspect Ratio < 0.6, 0.74 < Solidity < 0.983
+2022-02-11 22:00:23,148 — INFO — [EARS]--test_img_1--Found 1 Ear(s) before clean up
+2022-02-11 22:00:23,149 — INFO — [CLNUP]--test_img_1--Ear clean-up module turned off.
+2022-02-11 22:00:23,641 — INFO — [EARS]--test_img_1--Detected 0 white artifacts (qr stickr or white paper) removing...
+2022-02-11 22:00:23,648 — INFO — [EARS]--test_img_1--Ear #1: Min Area: 6.051% Aspect Ratio: 0.22 Solidity score: 0.952
+2022-02-11 22:00:23,649 — INFO — [EARS]--test_img_1--Found 1 Ear(s) after clean up
+2022-02-11 22:00:23,688 — INFO — [SILK]--test_img_1--Silk clean-up module turned off.
+2022-02-11 22:00:23,689 — INFO — [EAR]--test_img_1--Ear #1: Checking ear orientation...
+2022-02-11 22:00:23,716 — INFO — [EAR]--test_img_1--Ear #1: Ear orientation is fine.
+2022-02-11 22:00:23,718 — INFO — [EAR]--test_img_1--Extracting features from 1 ears...
+2022-02-11 22:00:23,718 — INFO — [EAR]--test_img_1--Ear #1: Extracting basic morphological features...
+2022-02-11 22:00:23,912 — INFO — [EAR]--test_img_1--Ear #1: Done extracting basic morphological features
+2022-02-11 22:00:23,921 — INFO — [EAR]--test_img_1--Ear #1: Done extracting image moments
+2022-02-11 22:00:23,933 — INFO — [EAR]--test_img_1--Ear #1: Ear tip segmentation turned off
+2022-02-11 22:00:23,933 — INFO — [EAR]--test_img_1--Ear #1: Ear bottom segmentation turned off
+2022-02-11 22:00:23,934 — INFO — [EAR]--test_img_1--Ear #1: Extracting kernel features...
+2022-02-11 22:00:26,383 — INFO — [EAR]--test_img_1--Ear #1: Done extracting kernel features
+2022-02-11 22:00:26,384 — INFO — [EAR]--test_img_1--Ear #1: USDA grading turned off.
+2022-02-11 22:00:26,387 — INFO — [EAR]--test_img_1--Collected all ear features.

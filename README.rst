@@ -16,7 +16,7 @@ Quick Start
 
 Clone Repo::
 
- git clone https://github.com/juang0nzal3z/EarCV.git
+ git clone https://github.com/Resende-Lab/EarCV.git
 
 Run tests from the main ''EarCV/'' folder contianing this repo. Let's use images within the ''/test/'' folder as examples.
 
