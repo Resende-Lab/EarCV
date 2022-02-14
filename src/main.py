@@ -478,11 +478,12 @@ def main():
 		Red = dominant[0]
 		Green = dominant[1]
 		Blue = dominant[2]
+		rgb_score = Red+Green+Blue
 		#print(Red+Green+Blue)
-		if Red+Green+Blue > 685:
+		if rgb_score > 675:
 			white.append(number_of_ears)
 		#print(white)
-	log.info("[EARS]--{}--Detected {} white artifacts (qr stickr or white paper) removing...".format(filename, len(white)))
+	log.info("[EARS]--{}--Detected {} white artifacts with a RGB score of {} (qr stickr or white paper) removing...".format(filename, len(white), rgb_score))
 	white = [x - 1 for x in white]
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 	###################################  Sort ears module ####################################
