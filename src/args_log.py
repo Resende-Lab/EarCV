@@ -21,7 +21,7 @@ def options():
 
 	#QR code options
 	parser.add_argument("-qr", "--qrcode", default=False, action='store_true', help="Raise flag to scan entire image for QR code.")	
-	parser.add_argument("-r", "--rename", default=True, action='store_false', help="Default renames images with found QRcode. Raise flag to stop renaming images with found QRcode.")	
+	parser.add_argument("-r", "--rename", default=False, action='store_false', help="Raise flag to rename images with found QRcode.")	
 	parser.add_argument("-qr_scan", "--qr_window_size_overlap", metavar=("[Window size of x pixels by x pixels]", "[Amount of overlap (0 < x < 1)]"), nargs=2, type=float, help="Provide the size of window to scan through image for QR code and the amount of overlap between sections(0 < x < 1).")
 
 	#Color Checker options
