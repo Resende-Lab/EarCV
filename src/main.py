@@ -524,7 +524,7 @@ def main():
 		if height_i > width_i:
 			rat = round(width_i/height_i, 2)
 		else:
-			rat = round(height_i/width_i, 2)
+			#rat = round(height_i/width_i, 2)
 			ear = cv2.rotate(ear, cv2.ROTATE_90_COUNTERCLOCKWISE) 				#This rotates the image in case it is saved vertically
 
 		ear = cv2.copyMakeBorder(ear, 30, 30, 30, 30, cv2.BORDER_CONSTANT)
