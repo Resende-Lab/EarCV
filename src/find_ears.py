@@ -55,10 +55,7 @@ def filter(filename, binary, min_area, max_area, min_aspect_ratio, max_aspect_ra
 			rects = cv2.minAreaRect(c)
 			width_i = int(rects[1][0])
 			height_i = int(rects[1][1])
-			if height_i > width_i:
-				rat = round(width_i/height_i, 2)
-			else:
-				rat = round(height_i/width_i, 2)
+			rat = round(height_i/width_i, 2)
 			if min_aspect_ratio < rat < max_aspect_ratio and min_solidity < ear_solidity < max_solidity: 
 				cv2.drawContours(mask, [c], -1, (255), -1)
 				i = i+1
