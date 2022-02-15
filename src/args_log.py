@@ -34,6 +34,8 @@ def options():
 	parser.add_argument("-thresh", "--threshold", metavar=("[channel]", "[intensity threshold]", "[invert]"), help="Manual ear segmentation module. Use if K fails", nargs=3, required=False)
 	parser.add_argument("-size", "--ear_size", metavar=("[Min area as percent of total image area]", "[Max Area as percent of total image area]"), nargs=2, type=float, help="Ear size filter default: Min Area: 1.5 percent Max Area: 15 percent. Flag with two arguments to customize size filter.")
 	parser.add_argument("-filter", "--ear_filter", metavar=("[Min Aspect Ratio]","[Max Aspect Ratio]","[Min Solidity]", "[Max Solidity]"), nargs=4, type=float, help="Ear segmentation filter. Default: Aspect Ratio: 0.19 x < 0.6,  Max Solidity: 0.74 < x < 0.983. Flag with four arguments to customize ear filter.")
+	parser.add_argument("-yt", "--white_filter", metavar=("Whiteness threshold as a fraction of a theoretical total of 765"), nargs=1, type=float, help="Filter out white objects such as paper or qr code stickers. Whiteness fraction calculated as red+green+blue divided by a theoretical maximum of 765 (225*3)")
+
 
 	parser.add_argument("-clnup", "--ear_cleanup", default="None", help="Ear clean-up module. Raise flag to turn on with default settings or provide two arguments: Max Area Coefficient of Variation threshold and Max number of iterations to customize ear clean up module.", nargs='?', const='', required=False)
 	parser.add_argument("-slk", "--silk_cleanup", default="None", help="Silk decontamination module. Raise flag to turn on with default settings or provide two arguments: Min change in covexity and Max number of iterations to customize silk clean up module.", nargs='?', const='', required=False)

@@ -10,6 +10,7 @@ This script imports the 'utility.py', module within the same folder.
 """
 
 import numpy as np
+import math
 import cv2
 import argparse
 import os
@@ -52,14 +53,31 @@ def filter(filename, binary, min_area, max_area, min_aspect_ratio, max_aspect_ra
 		if max_area > ear_area > min_area:
 			hulls = cv2.convexHull(c); hull_areas = cv2.contourArea(hulls)
 			ear_solidity = float(ear_area)/hull_areas
-			rects = cv2.minAreaRect(c)
-			width_i = int(rects[1][0])
-			height_i = int(rects[1][1])
-			rat = round(height_i/width_i, 2)
+			#Find centroid
+			M = cv2.moments(c)
+			cX = int(M["m10"] / M["m00"])
+			cY = int(M["m01"] / M["m00"])
+			# Fit ellipse and calculate aspect ratio witht he axis in mind
+			e = cv2.fitEllipse(c)
+			# Principal axis
+			x1 = int(np.round(cX + e[1][1] / 2 * np.cos((e[2] + 90) * np.pi / 180.0)))
+			y1 = int(np.round(cY + e[1][1] / 2 * np.sin((e[2] + 90) * np.pi / 180.0)))
+			x2 = int(np.round(cX + e[1][1] / 2 * np.cos((e[2] - 90) * np.pi / 180.0)))
+			y2 = int(np.round(cY + e[1][1] / 2 * np.sin((e[2] - 90) * np.pi / 180.0)))
+			#cv2.line(img, (x1, y1), (x2, y2), (255, 255, 0), 15)
+			longaxis = math.sqrt((x2-x1)**2+(y2-y1)**2)
+			# Minor axis axis
+			x11 = int(np.round(cX + e[1][0] / 2 * np.sin((e[2] - 90) * np.pi / 180.0)))
+			y11 = int(np.round(cY + e[1][0] / 2 * np.cos((e[2] - 90) * np.pi / 180.0)))
+			x22 = int(np.round(cX + e[1][0] / 2 * np.sin((e[2] + 90) * np.pi / 180.0)))
+			y22 = int(np.round(cY + e[1][0] / 2 * np.cos((e[2] + 90) * np.pi / 180.0)))
+			#cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), 15)
+			#Calculate euclidean distance of both lines and then find aspect ration that way
+			shortaxis = math.sqrt((x22-x11)**2+(y22-y11)**2)		
+			rat = round(shortaxis/longaxis, 2)
 			if min_aspect_ratio < rat < max_aspect_ratio and min_solidity < ear_solidity < max_solidity: 
 				cv2.drawContours(mask, [c], -1, (255), -1)
 				i = i+1
-
 	return mask, i
 
 

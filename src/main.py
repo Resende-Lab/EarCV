@@ -33,6 +33,7 @@ import os
 import re
 import string
 import csv
+import math
 import imghdr
 import numpy as np
 import cv2
@@ -447,44 +448,52 @@ def main():
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 	###################################  Remove white paper ##################################
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-	cnts = cv2.findContours(filtered, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); cnts = cnts[0] if len(cnts) == 2 else cnts[1]
-	boundingBoxes = [cv2.boundingRect(c) for c in cnts]
-#Sort left to right
-	(cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes), key=lambda b:b[1][0], reverse= False))
-#Count the number of ears and number them on proof
-	number_of_ears = 0
-	ear_masks = []
-	#array to remove white things
-	white = []
-	for c in cnts:
-		number_of_ears = number_of_ears+1
-#Create ROI and find tip
-		rects = cv2.minAreaRect(c)
-		width_i = int(rects[1][0])
-		height_i = int(rects[1][1])
-		boxs = cv2.boxPoints(rects)
-		boxs = np.array(boxs, dtype="int")
-		src_pts_i = boxs.astype("float32")
-		dst_pts_i = np.array([[0, height_i-1],[0, 0],[width_i-1, 0],[width_i-1, height_i-1]], dtype="float32")
-		M_i = cv2.getPerspectiveTransform(src_pts_i, dst_pts_i)
-		ear = cv2.warpPerspective(ears, M_i, (width_i, height_i))
-		n_colors = 2
-		pixels = np.float32(ear.reshape(-1, 3))
-		criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
-		flags = cv2.KMEANS_RANDOM_CENTERS
-		_, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
-		_, counts = np.unique(labels, return_counts=True)
-		dominant = palette[np.argmax(counts)]
-		Red = dominant[0]
-		Green = dominant[1]
-		Blue = dominant[2]
-		rgb_score = Red+Green+Blue
-		#print(Red+Green+Blue)
-		if rgb_score > 675:
-			white.append(number_of_ears)
-		#print(white)
-	log.info("[EARS]--{}--Detected {} white artifacts with a RGB score of {} (qr stickr or white paper) removing...".format(filename, len(white), rgb_score))
-	white = [x - 1 for x in white]
+	if args.white_filter != None:
+		white_threshold = args.white_filter[0]
+		log.info("[EARS]--{}--Whiteness filter turned on with a threhold of {}".format(filename, white_threshold))
+		white_threshold = white_threshold*765
+		cnts = cv2.findContours(filtered, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+		boundingBoxes = [cv2.boundingRect(c) for c in cnts]
+	#Sort left to right
+		(cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes), key=lambda b:b[1][0], reverse= False))
+	#Count the number of ears and number them on proof
+		number_of_ears = 0
+		ear_masks = []
+		#array to remove white things
+		white = []
+		for c in cnts:
+			number_of_ears = number_of_ears+1
+	#Create ROI and find tip
+			rects = cv2.minAreaRect(c)
+			width_i = int(rects[1][0])
+			height_i = int(rects[1][1])
+			boxs = cv2.boxPoints(rects)
+			boxs = np.array(boxs, dtype="int")
+			src_pts_i = boxs.astype("float32")
+			dst_pts_i = np.array([[0, height_i-1],[0, 0],[width_i-1, 0],[width_i-1, height_i-1]], dtype="float32")
+			M_i = cv2.getPerspectiveTransform(src_pts_i, dst_pts_i)
+			ear = cv2.warpPerspective(ears, M_i, (width_i, height_i))
+			n_colors = 2
+			pixels = np.float32(ear.reshape(-1, 3))
+			criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
+			flags = cv2.KMEANS_RANDOM_CENTERS
+			_, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
+			_, counts = np.unique(labels, return_counts=True)
+			dominant = palette[np.argmax(counts)]
+			Red = dominant[0]
+			Green = dominant[1]
+			Blue = dominant[2]
+			rgb_score = Red+Green+Blue
+			#print(Red+Green+Blue)
+			if rgb_score > white_threshold:
+				white.append(number_of_ears)
+			#print(white)
+		white_threshold = white_threshold/765
+		log.info("[EARS]--{}--Detected {} white artifacts with a RGB score of > {} removing...".format(filename, len(white), rgb_score, white_threshold))
+		white = [x - 1 for x in white]
+	else:
+		white = []
+		log.info("[EARS]--{}--Whiteness filter turned off.".format(filename))
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 	###################################  Sort ears module ####################################
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -509,9 +518,33 @@ def main():
 		cX = int(M["m10"] / M["m00"])
 		cY = int(M["m01"] / M["m00"])
 #Create ROI and find tip
+		# Fit ellipse and calculate aspect ratio witht he axis in mind
+		e = cv2.fitEllipse(c)
+		# Principal axis
+		x1 = int(np.round(cX + e[1][1] / 2 * np.cos((e[2] + 90) * np.pi / 180.0)))
+		y1 = int(np.round(cY + e[1][1] / 2 * np.sin((e[2] + 90) * np.pi / 180.0)))
+		x2 = int(np.round(cX + e[1][1] / 2 * np.cos((e[2] - 90) * np.pi / 180.0)))
+		y2 = int(np.round(cY + e[1][1] / 2 * np.sin((e[2] - 90) * np.pi / 180.0)))
+		#cv2.line(img, (x1, y1), (x2, y2), (255, 255, 0), 15)
+		longaxis = math.sqrt((x2-x1)**2+(y2-y1)**2)
+
+
+		# Minor axis axis
+		x11 = int(np.round(cX + e[1][0] / 2 * np.sin((e[2] - 90) * np.pi / 180.0)))
+		y11 = int(np.round(cY + e[1][0] / 2 * np.cos((e[2] - 90) * np.pi / 180.0)))
+		x22 = int(np.round(cX + e[1][0] / 2 * np.sin((e[2] + 90) * np.pi / 180.0)))
+		y22 = int(np.round(cY + e[1][0] / 2 * np.cos((e[2] + 90) * np.pi / 180.0)))
+		#cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), 15)
+		#Calculate euclidean distance of both lines and then find aspect ration that way
+		shortaxis = math.sqrt((x22-x11)**2+(y22-y11)**2)		
+		rat = round(shortaxis/longaxis, 2)
+
+
+
 		rects = cv2.minAreaRect(c)
 		width_i = int(rects[1][0])
 		height_i = int(rects[1][1])
+		#rat = round(width_i/height_i, 2)
 		boxs = cv2.boxPoints(rects)
 		boxs = np.array(boxs, dtype="int")
 		src_pts_i = boxs.astype("float32")
@@ -519,20 +552,31 @@ def main():
 		M_i = cv2.getPerspectiveTransform(src_pts_i, dst_pts_i)
 		ear = cv2.warpPerspective(ears, M_i, (width_i, height_i))
 
+		#Whiteness index
+		n_colors = 2
+		pixels = np.float32(ear.reshape(-1, 3))
+		criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
+		flags = cv2.KMEANS_RANDOM_CENTERS
+		_, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
+		_, counts = np.unique(labels, return_counts=True)
+		dominant = palette[np.argmax(counts)]
+		Red = dominant[0]
+		Green = dominant[1]
+		Blue = dominant[2]
+		rgb_score = Red+Green+Blue
+		rgb_score = rgb_score/765
+		#Aspect_Ratio
 		height_i = ear.shape[0]
 		width_i = ear.shape[1]
-		if height_i > width_i:
-			rat = round(width_i/height_i, 2)
-		else:
-			#rat = round(height_i/width_i, 2)
+		if height_i < width_i:
 			ear = cv2.rotate(ear, cv2.ROTATE_90_COUNTERCLOCKWISE) 				#This rotates the image in case it is saved vertically
-
+		#Area and solidity
 		ear = cv2.copyMakeBorder(ear, 30, 30, 30, 30, cv2.BORDER_CONSTANT)
 		ear_area = cv2.contourArea(c)
 		hulls = cv2.convexHull(c); hull_areas = cv2.contourArea(hulls)
 		ear_solidity = float(ear_area)/hull_areas	
 		ear_percent = (ear_area/img_area)*100
-		log.info("[EARS]--{}--Ear #{}: Min Area: {}% Aspect Ratio: {} Solidity score: {}".format(filename, number_of_ears, round(ear_percent, 3), rat, round(ear_solidity, 3)))
+		log.info("[EARS]--{}--Ear #{}: Min Area: {}% Aspect Ratio: {} Solidity score: {} Whiteness: {}".format(filename, number_of_ears, round(ear_percent, 3), rat, round(ear_solidity, 3), round(rgb_score,3)))
 		#Draw the countour number on the image
 		ear_masks.append(ear)
 		cv2.drawContours(ears_proof, [c], -1, (134,22,245), -1)
