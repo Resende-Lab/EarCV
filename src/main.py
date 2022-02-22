@@ -1110,7 +1110,7 @@ def main():
 			csvname = out + 'all_features' +'.csv'
 			file_exists = os.path.isfile(csvname)
 			with open (csvname, 'a') as csvfile:
-				headers = ['Fullpath', 'Root', 'Filename', 'Ext', 'Ear Number', 'QR_code', 'PixelsPerMetric', 'Units',  'Ear_Area', 'Ear_Box_Area', 'Ear_Box_Length', 'Ear_Extreme_Length', 'Ear_Box_Width',
+				headers = ['Fullpath', 'Root', 'Filename', 'Ext', 'Ear Number', 'QR_Code', 'PixelsPerMetric', 'Units',  'Ear_Area', 'Ear_Box_Area', 'Ear_Box_Length', 'Ear_Extreme_Length', 'Ear_Box_Width',
 							'Max_Width', 'MA_Ellipse', 'ma_Ellipse', 'Perimeter', 'Convexity', 'Solidity', 'Convexity_polyDP', 'Taper',
 							'Taper_Convexity', 'Taper_Solidity', 'Taper_Convexity_polyDP', 'Widths_Sdev', 'Curvature', 'Tip_Area', 'Bottom_Area',
 							'Krnl_Area', 'Kernel_Length', 'Krnl_Convexity', 'Tip_Fill', 'Bottom_Fill', 'Krnl_Fill', 'KRN_Pred', 'Mean_Kernel_Width',
