@@ -24,17 +24,19 @@ Version 1.2
 
 Version 1.3
 ===========
-
 - test out all new features [DONE]
 - update manual with new features min cov and min aspect ration [DONE]
 - Create a sinple and complex feature output, with ppm and QR scan consolidation [DONE]
 - Add low resolution option on ear proof [DONE]
-- Fix QR scan bug when running it by itself.
+- Fix QR scan bug when running it by itself. [DONE]
+- Fix aspect ratio bug [DONE]
+- Add white filter flag [DONE]
 
 Version 1.4
 ===========
-
+- Add color channel figure []
+- -Rot flag has a bud, thmp refferences before assigment []
+- PPM.py prints something instead of loggin git
 - Corroborate Color correction feature [Ask Nyanika]
-- Add color filter where anything that is white in color gets filtered out.
 - Fix the -clnup flag with new convexity argument
 - Fix KRN bug when none of the slices pass QC

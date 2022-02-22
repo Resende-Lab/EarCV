@@ -101,7 +101,17 @@ def calculate_convexity(binary):
 	return convexity		
 
 def rotate_ear(ear):
+	
+	#cv2.namedWindow('[DEBUG] [EARS] Segmentation after Filter', cv2.WINDOW_NORMAL)
+	#cv2.resizeWindow('[DEBUG] [EARS] Segmentation after Filter', 1000, 1000)
+	#cv2.imshow('[DEBUG] [EARS] Segmentation after Filter', ear); cv2.waitKey(3000); cv2.destroyAllWindows()
+
 	_,_,r = cv2.split(ear)
+
+	#cv2.namedWindow('[DEBUG] [EARS] Segmentation after Filter', cv2.WINDOW_NORMAL)
+	#cv2.resizeWindow('[DEBUG] [EARS] Segmentation after Filter', 1000, 1000)
+	#cv2.imshow('[DEBUG] [EARS] Segmentation after Filter', r); cv2.waitKey(3000); cv2.destroyAllWindows()
+
 	sect = utility.ranges(ear.shape[0], 3)
 	ori_width = []
 	for i in range(3):
@@ -114,6 +124,8 @@ def rotate_ear(ear):
 		cntss = cv2.findContours(wid2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 		cntss = cntss[0] if len(cntss) == 2 else cntss[1]
 		cntss = sorted(cntss, key=cv2.contourArea, reverse=False)[:len(cntss)]
+		#print(len(cntss))
+		thmp = []
 		for cs in cntss:
 			rects = cv2.minAreaRect(cs)
 			boxs = cv2.boxPoints(rects)
@@ -125,4 +137,3 @@ def rotate_ear(ear):
 			thmp = dist.euclidean((tlblXs, tlblYs), (trbrXs, trbrYs)) #pixel width
 		ori_width.append(thmp)
 	return ori_width
-

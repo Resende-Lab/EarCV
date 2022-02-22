@@ -1110,7 +1110,7 @@ def main():
 			csvname = out + 'all_features' +'.csv'
 			file_exists = os.path.isfile(csvname)
 			with open (csvname, 'a') as csvfile:
-				headers = ['Filename', 'PixelsPerMetric', 'Units', 'Ear Number', 'Ear_Area', 'Ear_Box_Area', 'Ear_Box_Length', 'Ear_Extreme_Length', 'Ear_Box_Width',
+				headers = ['Fullpath', 'Root', 'Filename', 'Ext', 'Ear Number', 'QRcode', 'PixelsPerMetric', 'Units',  'Ear_Area', 'Ear_Box_Area', 'Ear_Box_Length', 'Ear_Extreme_Length', 'Ear_Box_Width',
 							'Max_Width', 'MA_Ellipse', 'ma_Ellipse', 'Perimeter', 'Convexity', 'Solidity', 'Convexity_polyDP', 'Taper',
 							'Taper_Convexity', 'Taper_Solidity', 'Taper_Convexity_polyDP', 'Widths_Sdev', 'Curvature', 'Tip_Area', 'Bottom_Area',
 							'Krnl_Area', 'Kernel_Length', 'Krnl_Convexity', 'Tip_Fill', 'Bottom_Fill', 'Krnl_Fill', 'KRN_Pred', 'Mean_Kernel_Width',
@@ -1122,7 +1122,7 @@ def main():
 				if not file_exists:
 					writer.writeheader()  # file doesn't exist yet, write a header	
 
-				writer.writerow({'Filename': filename, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'Ear Number': n, 'Ear_Area': Ear_Area, 'Ear_Box_Area': Ear_Box_Area,
+				writer.writerow({'Fullpath': fullpath, 'Root': root, 'Filename': filename, 'Ext': ext, 'Ear Number': n, 'QR_Code': QRcodeData, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'Ear_Area': Ear_Area, 'Ear_Box_Area': Ear_Box_Area,
 								 'Ear_Box_Length': Ear_Box_Length, 'Ear_Extreme_Length': Ear_Extreme_Length, 'Ear_Box_Width': Ear_Box_Width,
 								 'Max_Width': max_Width, 'MA_Ellipse': MA, 'ma_Ellipse': ma, 'Perimeter': perimeters,
 								 'Convexity': Convexity , 'Solidity': Solidity, 'Convexity_polyDP': Convexity_polyDP, 'Taper': Taper,
@@ -1143,7 +1143,7 @@ def main():
 			csvname = out + 'features_condensed' +'.csv'
 			file_exists = os.path.isfile(csvname)
 			with open (csvname, 'a') as csvfile:
-				headers = ['Filename', 'PixelsPerMetric', 'Units', 'QR_Code', 'Ear_Number', 'Ear_Area', 
+				headers = ['Fullpath', 'Root', 'Filename', 'Ext', 'Ear Number', 'QR_Code', 'PixelsPerMetric', 'Units',  'Ear_Area', 
 							'Ear_Length', 'Ear_Width','Solidity','Convexity_polyDP','Taper',
 							'Curvature', 'Krnl_Area', 'Tip_Fill', 'Predicted_KRN']
 
@@ -1151,7 +1151,7 @@ def main():
 				if not file_exists:
 					writer.writeheader()  # file doesn't exist yet, write a header
 
-				writer.writerow({'Filename': filename, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'QR_Code': QRcodeData , 'Ear_Number': n, 'Ear_Area': Ear_Area, 'Ear_Length': Ear_Extreme_Length, 'Ear_Width': max_Width,
+				writer.writerow({'Fullpath': fullpath, 'Root': root, 'Filename': filename, 'Ext': ext, 'Ear Number': n, 'QR_Code': QRcodeData, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'Ear_Area': Ear_Area, 'Ear_Length': Ear_Extreme_Length, 'Ear_Width': max_Width,
 								 'Solidity': Solidity, 'Convexity_polyDP': Convexity_polyDP, 'Taper': Taper_Convexity_polyDP, 
 							     'Curvature': Widths_Sdev, 'Krnl_Area': Krnl_Area, 'Tip_Fill': Krnl_Fill , 'Predicted_KRN': KRN})
 
@@ -1162,7 +1162,7 @@ def main():
 			csvname = out + 'krn_features' +'.csv'
 			file_exists = os.path.isfile(csvname)
 			with open (csvname, 'a') as csvfile:
-				headers = ['Filename', 'Units', 'Ear Number', 'Ear_Area', 'Ear_Extreme_Length', 'Max_Width', 'Solidity','Convexity_polyDP',
+				headers = ['Fullpath', 'Root', 'Filename', 'Ext', 'Ear Number', 'QR_Code', 'PixelsPerMetric', 'Units', 'Ear_Area', 'Ear_Extreme_Length', 'Max_Width', 'Solidity','Convexity_polyDP',
 							'Taper_Convexity_polyDP', 'Widths_Sdev', 'Krnl_Area', 'Krnl_Fill', 'KRN_Pred', 'KRN_Boundaries',
 							 'Mean_Kernel_Width', 'KRN_Std_Dev', 'm00','m10','m01','m20','m11','m02','m30','m21','m12','m03','mu20','mu11','mu02','mu30','mu21','mu12','mu03','nu20',
 							'nu11','nu02','nu30','nu21','nu12','nu03']
@@ -1173,7 +1173,7 @@ def main():
 					writer.writeheader()  # file doesn't exist yet, write a header	
 
 
-				writer.writerow({'Filename': filename, 'Units': Units, 'Ear Number': n, 'Ear_Area': Ear_Area, 'Ear_Extreme_Length': Ear_Extreme_Length, 'Max_Width': max_Width,
+				writer.writerow({'Fullpath': fullpath, 'Root': root, 'Filename': filename, 'Ext': ext, 'Ear Number': n, 'QR_Code': QRcodeData, 'PixelsPerMetric': PixelsPerMetric, 'Units': Units, 'Ear_Area': Ear_Area, 'Ear_Extreme_Length': Ear_Extreme_Length, 'Max_Width': max_Width,
 								 'Solidity': Solidity, 'Convexity_polyDP': Convexity_polyDP, 'Taper_Convexity_polyDP': Taper_Convexity_polyDP, 
 							     'Widths_Sdev': Widths_Sdev, 'Krnl_Area': Krnl_Area, 'Krnl_Fill': Krnl_Fill , 'KRN_Pred': KRN, 'KRN_Boundaries': KRN_Boundaries, 'Mean_Kernel_Width': Mean_Kernel_Width,
 								 'KRN_Std_Dev': KRN_Std_Dev, 'm00': moments['m00'],'m10': moments['m10'],'m01': moments['m01'],'m20': moments['m20'],'m11': moments['m11'],

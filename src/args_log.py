@@ -40,7 +40,7 @@ def options():
 	parser.add_argument("-clnup", "--ear_cleanup", default="None", help="Ear clean-up module. Raise flag to turn on with default settings or provide two arguments: Max Area Coefficient of Variation threshold and Max number of iterations to customize ear clean up module.", nargs='?', const='', required=False)
 	parser.add_argument("-slk", "--silk_cleanup", default="None", help="Silk decontamination module. Raise flag to turn on with default settings or provide two arguments: Min change in covexity and Max number of iterations to customize silk clean up module.", nargs='?', const='', required=False)
 	
-	parser.add_argument("-rot", "--rotation", default=True, action='store_false', help="Raise flag to stop ears from roating.")	
+	parser.add_argument("-rot", "--rotation", default=False, action='store_true', help="Raise flag to ratate ear based on 3 part taper analysis.")	
 
 	#Cob and shank segmentation options
 	parser.add_argument("-t", "--tip", nargs='*', help="Tip segmentation module. Usage: '-t': automatic thresholding, and '-t # # # #' for custom segmentation. Flag with four arguments to customize tip segmentation module with the following parameters: Hue/Sat Channel, Thresholding intensity, percent, Dialate.")

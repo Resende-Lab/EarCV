@@ -540,13 +540,16 @@ def circ(radius, chord):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 
+
+
+
+
 """ -----------------------------------------------------------------------------------------------------
 Basic Thresholding module for background removal when k means dont work
  -----------------------------------------------------------------------------------------------------"""
 def thresh(img, channel, threshold, inv, debug):
 
     """basic thersholding technique
-
     b = 
     g =
     r =
@@ -556,11 +559,8 @@ def thresh(img, channel, threshold, inv, debug):
     l =
     a =
     b_chnl =
-
     threshold out be any number from 1< x < 254 or 'otsu'
-
     'inv' to invert (use for white backgrounds)
-
     """
     ears = img.copy()
     b,g,r = cv2.split(ears)                                         #Split into it channel constituents
@@ -589,6 +589,27 @@ def thresh(img, channel, threshold, inv, debug):
         channel = a
     elif channel == 'b_chnl':
         channel = b_chnl
+
+    b = cv2.cvtColor(b,cv2.COLOR_GRAY2RGB)
+    g = cv2.cvtColor(g,cv2.COLOR_GRAY2RGB)
+    r = cv2.cvtColor(r,cv2.COLOR_GRAY2RGB)
+    h = cv2.cvtColor(h,cv2.COLOR_GRAY2RGB)
+    s = cv2.cvtColor(s,cv2.COLOR_GRAY2RGB)
+    v = cv2.cvtColor(v,cv2.COLOR_GRAY2RGB)
+    l = cv2.cvtColor(l,cv2.COLOR_GRAY2RGB)
+    a = cv2.cvtColor(a,cv2.COLOR_GRAY2RGB)
+    b_chnl = cv2.cvtColor(b_chnl,cv2.COLOR_GRAY2RGB)
+
+    ear_proof = cv2.hconcat([ears, r, g, b])
+    hsv_proof = cv2.hconcat([hsv, h, s, v])
+    lab_proof = cv2.hconcat([lab, l, a, b])
+    all_proof = cv2.vconcat([ear_proof, hsv_proof, lab_proof])
+
+    if debug is True:
+        cv2.namedWindow('[DEBUG] [EARS] All color channels', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('[DEBUG] [EARS] All color channels', 1000, 1000)
+        cv2.imshow('[DEBUG] [EARS] All color channels', all_proof); cv2.waitKey(9000); cv2.destroyAllWindows()
+
 
     if debug is True:
         cv2.namedWindow('[DEBUG] [EARS] Channel for Thresholding', cv2.WINDOW_NORMAL)
